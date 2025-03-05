@@ -1,4 +1,3 @@
-
 export function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -14,6 +13,11 @@ export function Footer() {
             </a>
             <p className="text-muted-foreground max-w-md">
               BankDetektiv hilft dir, unbekannte Abbuchungen auf deinem Kontoauszug zu identifizieren und zu verstehen.
+            </p>
+            <p className="text-sm text-muted-foreground mt-2">
+              <a href="https://www.wasistdasfüreineabbuchung.de" className="hover:text-primary transition-colors">
+                www.wasistdasfüreineabbuchung.de
+              </a>
             </p>
           </div>
           
