@@ -12,7 +12,7 @@ const Index = () => {
         
         <section className="container py-20">
           <div className="text-center max-w-4xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Wie LadeFuchs funktioniert</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Wie AbbuCheck funktioniert</h2>
             <p className="text-lg text-muted-foreground">Drei einfache Schritte, um mysteriöse Abbuchungen zu identifizieren</p>
           </div>
           
@@ -25,7 +25,7 @@ const Index = () => {
               },
               {
                 number: '02',
-                title: 'Bei LadeFuchs suchen',
+                title: 'Bei AbbuCheck suchen',
                 description: 'Geben Sie den Namen oder die Beschreibung der Abbuchung in unsere Suchleiste ein.'
               },
               {
@@ -54,7 +54,7 @@ const Index = () => {
               <div className="p-8 md:p-12 text-center">
                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Haben Sie eine unbekannte Abbuchung?</h2>
                 <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Lassen Sie sich nicht von mysteriösen Transaktionen verwirren. Nutzen Sie LadeFuchs, um sofort herauszufinden, wofür Sie bezahlt haben.
+                  Lassen Sie sich nicht von mysteriösen Transaktionen verwirren. Nutzen Sie AbbuCheck, um sofort herauszufinden, wofür Sie bezahlt haben.
                 </p>
                 <a 
                   href="#" 
@@ -76,16 +76,16 @@ const Index = () => {
           <div className="max-w-3xl mx-auto space-y-6">
             {[
               {
-                question: 'Was ist LadeFuchs?',
-                answer: 'LadeFuchs ist ein Dienst, der Ihnen hilft, unbekannte Abbuchungen auf Ihrem Kontoauszug zu identifizieren. Wir verfügen über eine umfangreiche Datenbank von Unternehmen und deren Abrechnungsbezeichnungen.'
+                question: 'Was ist AbbuCheck?',
+                answer: 'AbbuCheck ist ein Dienst, der Ihnen hilft, unbekannte Abbuchungen auf Ihrem Kontoauszug zu identifizieren. Wir verfügen über eine umfangreiche Datenbank von Unternehmen und deren Abrechnungsbezeichnungen.'
               },
               {
                 question: 'Wie genau sind die Informationen?',
                 answer: 'Wir bemühen uns, unsere Datenbank ständig zu aktualisieren und zu erweitern. Die meisten gängigen Abbuchungen können wir zuverlässig identifizieren. Bei sehr speziellen oder lokalen Unternehmen kann es vorkommen, dass wir noch keine Informationen haben.'
               },
               {
-                question: 'Ist die Nutzung von LadeFuchs kostenlos?',
-                answer: 'Ja, die Grundfunktionen von LadeFuchs sind kostenlos. Wir planen in Zukunft zusätzliche Premium-Funktionen anzubieten, aber die Basissuche wird immer kostenlos bleiben.'
+                question: 'Ist die Nutzung von AbbuCheck kostenlos?',
+                answer: 'Ja, die Grundfunktionen von AbbuCheck sind kostenlos. Wir planen in Zukunft zusätzliche Premium-Funktionen anzubieten, aber die Basissuche wird immer kostenlos bleiben.'
               },
               {
                 question: 'Werden meine Daten sicher behandelt?',
@@ -106,6 +106,6 @@ const Index = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default Index;

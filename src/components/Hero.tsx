@@ -49,7 +49,7 @@ export function Hero() {
             Was ist diese <span className="text-primary">Abbuchung</span> auf meinem Kontoauszug?
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            LadeFuchs hilft Ihnen, mysteriöse Transaktionen auf Ihrem Konto zu identifizieren und zu verstehen, wofür Sie bezahlt haben.
+            AbbuCheck hilft Ihnen, mysteriöse Transaktionen auf Ihrem Konto zu identifizieren und zu verstehen, wofür Sie bezahlt haben.
           </p>
         </div>
         

@@ -30,7 +30,7 @@ export function Navbar() {
           href="/" 
           className="text-xl font-display font-medium tracking-tight"
         >
-          <span className="text-primary">Lade</span>Fuchs
+          <span className="text-primary">Abbu</span>Check
         </a>
         
         <nav className="hidden md:flex items-center space-x-8">
