@@ -37,7 +37,7 @@ export function Navbar() {
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Startseite</Link>
           <Link to="/ueber-uns" className="text-sm font-medium hover:text-primary transition-colors">Über uns</Link>
-          <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</a>
+          <Link to="/faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</Link>
           <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Kontakt</a>
         </nav>
         

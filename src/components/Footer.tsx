@@ -1,3 +1,6 @@
+
+import { Link } from 'react-router-dom';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   
@@ -6,11 +9,11 @@ export function Footer() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
-            <a href="/" className="inline-block mb-4">
+            <Link to="/" className="inline-block mb-4">
               <h2 className="text-2xl font-display font-medium tracking-tight">
                 <span className="text-primary">Bank</span>Detektiv
               </h2>
-            </a>
+            </Link>
             <p className="text-muted-foreground max-w-md">
               BankDetektiv hilft dir, unbekannte Abbuchungen auf deinem Kontoauszug zu identifizieren und zu verstehen.
             </p>
@@ -24,9 +27,9 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Links</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Startseite</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Über uns</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
+              <li><Link to="/" className="hover:text-primary transition-colors">Startseite</Link></li>
+              <li><Link to="/ueber-uns" className="hover:text-primary transition-colors">Über uns</Link></li>
+              <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
               <li><a href="#" className="hover:text-primary transition-colors">Kontakt</a></li>
             </ul>
           </div>
