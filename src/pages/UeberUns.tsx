@@ -18,7 +18,7 @@ const UeberUns = () => {
               <div className="md:col-span-5">
                 <div className="rounded-xl overflow-hidden">
                   <img 
-                    src="/sebastian-wuerz.jpg" 
+                    src="/lovable-uploads/f2b5846d-932a-4ec8-a638-91b81928e1a7.png" 
                     alt="Sebastian Wuerz, Gründer von BankDetektiv" 
                     className="w-full h-auto object-cover aspect-[3/4]"
                   />
@@ -30,16 +30,16 @@ const UeberUns = () => {
                 
                 <div className="prose prose-slate max-w-none">
                   <p className="mb-4">
-                    Mit über 15 Jahren Erfahrung im Bankwesen und Finanztechnologie gründete Sebastian Wuerz BankDetektiv aus einem persönlichen Bedürfnis heraus: Transparenz in unverständliche Kontoauszüge zu bringen.
+                    Mit über 15 Jahren Erfahrung im Bankwesen und der Finanztechnologie gründete Sebastian Wuerz BankDetektiv aus einem ganz persönlichen Grund: Er wollte endlich Klarheit in unverständliche Kontoauszüge bringen.
                   </p>
                   <p className="mb-4">
-                    Nach seiner Karriere bei der Deutschen Bank und verschiedenen FinTech-Startups bemerkte Sebastian ein wiederkehrendes Problem - Verbraucher hatten Schwierigkeiten, kryptische Abbuchungsbezeichnungen auf ihren Kontoauszügen zu identifizieren.
+                    Während seiner Zeit bei der Commerzbank und anderen Finanzinstituten sowie verschiedenen Startups fiel ihm immer wieder das gleiche Problem auf – viele Menschen konnten die oftmals kryptischen Abbuchungen auf ihren Kontoauszügen nicht zuordnen.
                   </p>
                   <p className="mb-4">
-                    "Als ich eines Tages selbst mit einer mysteriösen Abbuchung konfrontiert wurde und stundenlang recherchieren musste, um herauszufinden, wofür ich bezahlt hatte, wusste ich, dass es eine bessere Lösung geben muss", erklärt Sebastian.
+                    „Als ich selbst eine mysteriös aussehende Abbuchung entdeckte und stundenlang recherchieren musste, um herauszufinden, wofür ich eigentlich bezahlt hatte, wurde mir klar: Es muss eine einfachere Lösung geben", sagt Sebastian.
                   </p>
                   <p>
-                    So entstand BankDetektiv - ein Service, der Millionen von Deutschen hilft, schnell und einfach zu verstehen, wofür ihr Geld ausgegeben wurde.
+                    So entstand BankDetektiv – ein Service, der Millionen von Menschen in Deutschland dabei hilft, ihre Ausgaben auf einen Blick zu verstehen und sich vor potentiellem Betrug zu schützen.
                   </p>
                 </div>
               </div>
