@@ -30,16 +30,16 @@ export function Footer() {
               <li><Link to="/" className="hover:text-primary transition-colors">Startseite</Link></li>
               <li><Link to="/ueber-uns" className="hover:text-primary transition-colors">Über uns</Link></li>
               <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Kontakt</a></li>
+              <li><Link to="/kontakt" className="hover:text-primary transition-colors">Kontakt</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-medium mb-4">Rechtliches</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Datenschutz</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Impressum</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">AGB</a></li>
+              <li><Link to="/datenschutz" className="hover:text-primary transition-colors">Datenschutz</Link></li>
+              <li><Link to="/impressum" className="hover:text-primary transition-colors">Impressum</Link></li>
+              <li><Link to="/agb" className="hover:text-primary transition-colors">AGB</Link></li>
             </ul>
           </div>
         </div>

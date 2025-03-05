@@ -38,7 +38,7 @@ export function Navbar() {
           <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Startseite</Link>
           <Link to="/ueber-uns" className="text-sm font-medium hover:text-primary transition-colors">Über uns</Link>
           <Link to="/faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</Link>
-          <a href="#" className="text-sm font-medium hover:text-primary transition-colors">Kontakt</a>
+          <Link to="/kontakt" className="text-sm font-medium hover:text-primary transition-colors">Kontakt</Link>
         </nav>
         
         <button 

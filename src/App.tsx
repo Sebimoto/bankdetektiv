@@ -7,6 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import UeberUns from "./pages/UeberUns";
 import FAQ from "./pages/FAQ";
+import Kontakt from "./pages/Kontakt";
+import Datenschutz from "./pages/Datenschutz";
+import Impressum from "./pages/Impressum";
+import AGB from "./pages/AGB";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +25,10 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/ueber-uns" element={<UeberUns />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/agb" element={<AGB />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
