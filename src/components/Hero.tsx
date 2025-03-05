@@ -49,7 +49,7 @@ export function Hero() {
             Was ist diese <span className="text-primary">Abbuchung</span> auf meinem Kontoauszug?
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            AbbuCheck hilft dir, mysteriöse Transaktionen auf deinem Konto zu identifizieren und zu verstehen, wofür du bezahlt hast.
+            BankDetektiv hilft dir, mysteriöse Transaktionen auf deinem Konto zu identifizieren und zu verstehen, wofür du bezahlt hast.
           </p>
         </div>
         

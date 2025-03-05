@@ -9,11 +9,11 @@ export function Footer() {
           <div className="md:col-span-2">
             <a href="/" className="inline-block mb-4">
               <h2 className="text-2xl font-display font-medium tracking-tight">
-                <span className="text-primary">Abbu</span>Check
+                <span className="text-primary">Bank</span>Detektiv
               </h2>
             </a>
             <p className="text-muted-foreground max-w-md">
-              AbbuCheck hilft dir, unbekannte Abbuchungen auf deinem Kontoauszug zu identifizieren und zu verstehen.
+              BankDetektiv hilft dir, unbekannte Abbuchungen auf deinem Kontoauszug zu identifizieren und zu verstehen.
             </p>
           </div>
           
@@ -38,7 +38,7 @@ export function Footer() {
         </div>
         
         <div className="mt-16 pt-8 border-t border-border/30 text-sm text-muted-foreground flex flex-col md:flex-row md:justify-between">
-          <p>© {currentYear} AbbuCheck. Alle Rechte vorbehalten.</p>
+          <p>© {currentYear} BankDetektiv. Alle Rechte vorbehalten.</p>
           <p className="mt-2 md:mt-0">Inspiriert von whatsthatcharge.com</p>
         </div>
       </div>
