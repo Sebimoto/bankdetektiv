@@ -1,8 +1,10 @@
+
 # Welcome to your Lovable project
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/5cf02a33-65bf-49c8-aa4e-9e61cf6d22d0
+**Domain**: https://www.wasistdasfüreineabbuchung.de
 
 ## How can I edit this code?
 
@@ -67,3 +69,4 @@ Simply open [Lovable](https://lovable.dev/projects/5cf02a33-65bf-49c8-aa4e-9e61c
 ## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+
