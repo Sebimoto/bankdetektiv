@@ -13,7 +13,7 @@ export function Footer() {
               </h2>
             </a>
             <p className="text-muted-foreground max-w-md">
-              AbbuCheck hilft Ihnen, unbekannte Abbuchungen auf Ihrem Kontoauszug zu identifizieren und zu verstehen.
+              AbbuCheck hilft dir, unbekannte Abbuchungen auf deinem Kontoauszug zu identifizieren und zu verstehen.
             </p>
           </div>
           

@@ -36,6 +36,6 @@ const NotFound = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default NotFound;

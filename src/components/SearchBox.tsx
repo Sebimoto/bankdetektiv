@@ -36,7 +36,7 @@ export function SearchBox() {
           category: 'Einzelhandel',
           logo: 'https://logo.clearbit.com/amazon.com',
           website: 'amazon.de',
-          chargeDetails: 'Abbuchungen von Amazon erscheinen oft als "AMZN" oder "Amazon.de" auf Ihrem Kontoauszug.'
+          chargeDetails: 'Abbuchungen von Amazon erscheinen oft als "AMZN" oder "Amazon.de" auf deinem Kontoauszug.'
         }]);
       } else if (query.toLowerCase().includes('netflix')) {
         setResults([{
@@ -46,7 +46,7 @@ export function SearchBox() {
           category: 'Unterhaltung',
           logo: 'https://logo.clearbit.com/netflix.com',
           website: 'netflix.com',
-          chargeDetails: 'Netflix-Abbuchungen erscheinen typischerweise monatlich für Ihr Abonnement.'
+          chargeDetails: 'Netflix-Abbuchungen erscheinen typischerweise monatlich für dein Abonnement.'
         }]);
       } else if (query.toLowerCase().includes('paypal')) {
         setResults([{
@@ -79,7 +79,7 @@ export function SearchBox() {
         >
           <input
             type="text"
-            placeholder="Geben Sie einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
+            placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
             className="flex-1 px-6 py-4 text-base md:text-lg outline-none bg-transparent"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -118,7 +118,7 @@ export function SearchBox() {
         ) : query && !isSearching ? (
           <div className="text-center py-10 text-muted-foreground">
             <p>Keine Ergebnisse gefunden für "{query}"</p>
-            <p className="text-sm mt-2">Versuchen Sie einen anderen Suchbegriff oder prüfen Sie die genaue Schreibweise auf Ihrem Kontoauszug.</p>
+            <p className="text-sm mt-2">Versuche einen anderen Suchbegriff oder prüfe die genaue Schreibweise auf deinem Kontoauszug.</p>
           </div>
         ) : null}
       </div>

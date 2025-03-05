@@ -21,17 +21,17 @@ const Index = () => {
               {
                 number: '01',
                 title: 'Abbuchung finden',
-                description: 'Prüfen Sie Ihren Kontoauszug und identifizieren Sie die unbekannte Abbuchung.'
+                description: 'Prüfe deinen Kontoauszug und identifiziere die unbekannte Abbuchung.'
               },
               {
                 number: '02',
                 title: 'Bei AbbuCheck suchen',
-                description: 'Geben Sie den Namen oder die Beschreibung der Abbuchung in unsere Suchleiste ein.'
+                description: 'Gib den Namen oder die Beschreibung der Abbuchung in unsere Suchleiste ein.'
               },
               {
                 number: '03',
                 title: 'Abbuchung identifizieren',
-                description: 'Erhalten Sie detaillierte Informationen über das Unternehmen und die Transaktion.'
+                description: 'Erhalte detaillierte Informationen über das Unternehmen und die Transaktion.'
               }
             ].map((step, index) => (
               <div 
@@ -52,9 +52,9 @@ const Index = () => {
           <div className="container">
             <div className="glass-card rounded-3xl overflow-hidden">
               <div className="p-8 md:p-12 text-center">
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Haben Sie eine unbekannte Abbuchung?</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Hast du eine unbekannte Abbuchung?</h2>
                 <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Lassen Sie sich nicht von mysteriösen Transaktionen verwirren. Nutzen Sie AbbuCheck, um sofort herauszufinden, wofür Sie bezahlt haben.
+                  Lass dich nicht von mysteriösen Transaktionen verwirren. Nutze AbbuCheck, um sofort herauszufinden, wofür du bezahlt hast.
                 </p>
                 <a 
                   href="#" 
@@ -70,14 +70,14 @@ const Index = () => {
         <section className="container py-20">
           <div className="text-center max-w-4xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
-            <p className="text-lg text-muted-foreground">Antworten auf Ihre häufigsten Fragen</p>
+            <p className="text-lg text-muted-foreground">Antworten auf deine häufigsten Fragen</p>
           </div>
           
           <div className="max-w-3xl mx-auto space-y-6">
             {[
               {
                 question: 'Was ist AbbuCheck?',
-                answer: 'AbbuCheck ist ein Dienst, der Ihnen hilft, unbekannte Abbuchungen auf Ihrem Kontoauszug zu identifizieren. Wir verfügen über eine umfangreiche Datenbank von Unternehmen und deren Abrechnungsbezeichnungen.'
+                answer: 'AbbuCheck ist ein Dienst, der dir hilft, unbekannte Abbuchungen auf deinem Kontoauszug zu identifizieren. Wir verfügen über eine umfangreiche Datenbank von Unternehmen und deren Abrechnungsbezeichnungen.'
               },
               {
                 question: 'Wie genau sind die Informationen?',
@@ -89,7 +89,7 @@ const Index = () => {
               },
               {
                 question: 'Werden meine Daten sicher behandelt?',
-                answer: 'Absolut. Wir speichern keine persönlichen Bankdaten oder vollständigen Kontoauszüge. Nur die von Ihnen eingegebenen Suchbegriffe werden für die Verbesserung unseres Dienstes anonymisiert gespeichert.'
+                answer: 'Absolut. Wir speichern keine persönlichen Bankdaten oder vollständigen Kontoauszüge. Nur die von dir eingegebenen Suchbegriffe werden für die Verbesserung unseres Dienstes anonymisiert gespeichert.'
               }
             ].map((faq, index) => (
               <div 

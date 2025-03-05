@@ -43,13 +43,13 @@ export function Hero() {
       <div className="container relative z-10 flex flex-col items-center justify-center h-full pt-16">
         <div className="text-center max-w-4xl mx-auto mb-10 space-y-4 animate-fade-up">
           <div className="inline-block px-3 py-1 mb-2 text-xs font-medium text-primary bg-primary/10 rounded-full">
-            Identifizieren Sie unbekannte Bankabbuchungen
+            Identifiziere unbekannte Bankabbuchungen
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight text-balance">
             Was ist diese <span className="text-primary">Abbuchung</span> auf meinem Kontoauszug?
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-balance">
-            AbbuCheck hilft Ihnen, mysteriöse Transaktionen auf Ihrem Konto zu identifizieren und zu verstehen, wofür Sie bezahlt haben.
+            AbbuCheck hilft dir, mysteriöse Transaktionen auf deinem Konto zu identifizieren und zu verstehen, wofür du bezahlt hast.
           </p>
         </div>
         
