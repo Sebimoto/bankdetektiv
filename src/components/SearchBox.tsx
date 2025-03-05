@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
+import { germanCompanies } from '@/data/germanCompanies';
 
 interface SearchResult {
   id: string;
@@ -25,45 +26,18 @@ export function SearchBox() {
     
     setIsSearching(true);
     
-    // Simulate API call to whatsthatcharge.com
+    // Simuliere API-Aufruf zu whatsthatcharge.com
     setTimeout(() => {
-      // Mock result for demonstration
-      if (query.toLowerCase().includes('amazon') || query.toLowerCase().includes('amzn')) {
-        setResults([{
-          id: '1',
-          companyName: 'Amazon',
-          description: 'Online-Einzelhandelsplattform',
-          category: 'Einzelhandel',
-          logo: 'https://logo.clearbit.com/amazon.com',
-          website: 'amazon.de',
-          chargeDetails: 'Abbuchungen von Amazon erscheinen oft als "AMZN" oder "Amazon.de" auf deinem Kontoauszug.'
-        }]);
-      } else if (query.toLowerCase().includes('netflix')) {
-        setResults([{
-          id: '2',
-          companyName: 'Netflix',
-          description: 'Streaming-Dienst für Filme und Serien',
-          category: 'Unterhaltung',
-          logo: 'https://logo.clearbit.com/netflix.com',
-          website: 'netflix.com',
-          chargeDetails: 'Netflix-Abbuchungen erscheinen typischerweise monatlich für dein Abonnement.'
-        }]);
-      } else if (query.toLowerCase().includes('paypal')) {
-        setResults([{
-          id: '3',
-          companyName: 'PayPal',
-          description: 'Online-Zahlungsdienstleister',
-          category: 'Finanzen',
-          logo: 'https://logo.clearbit.com/paypal.com',
-          website: 'paypal.com',
-          chargeDetails: 'PayPal-Abbuchungen zeigen oft den Namen des Händlers zusammen mit "PAYPAL" an.'
-        }]);
-      } else {
-        setResults([]);
-      }
+      // Suche in der umfangreichen Datenbank
+      const searchQuery = query.toLowerCase();
+      const matchedResults = germanCompanies.filter(company => 
+        company.companyName.toLowerCase().includes(searchQuery) || 
+        company.searchTerms.some(term => term.toLowerCase().includes(searchQuery))
+      ).slice(0, 5); // Begrenze auf 5 Ergebnisse für bessere Übersicht
       
+      setResults(matchedResults.length > 0 ? matchedResults : []);
       setIsSearching(false);
-    }, 1500);
+    }, 1000);
   };
 
   return (
