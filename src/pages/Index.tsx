@@ -84,6 +84,10 @@ const Index = () => {
                 answer: 'Wir bemühen uns, unsere Datenbank ständig zu aktualisieren und zu erweitern. Die meisten gängigen Abbuchungen können wir zuverlässig identifizieren. Bei sehr speziellen oder lokalen Unternehmen kann es vorkommen, dass wir noch keine Informationen haben.'
               },
               {
+                question: 'Wie kann ich eine unbekannte Abbuchung einreichen?',
+                answer: 'Wenn du eine Abbuchung nicht in unserer Datenbank findest, kannst du uns diese gerne mitteilen. Nutze dafür das Kontaktformular oder schreibe uns eine E-Mail an info@wasistdasfüreineabbuchung.de. Wir werden die Abbuchung recherchieren und in unsere Datenbank aufnehmen, um anderen Nutzern zu helfen.'
+              },
+              {
                 question: 'Ist die Nutzung von BankDetektiv kostenlos?',
                 answer: 'Ja, die Grundfunktionen von BankDetektiv sind kostenlos. Wir planen in Zukunft zusätzliche Premium-Funktionen anzubieten, aber die Basissuche wird immer kostenlos bleiben.'
               },
