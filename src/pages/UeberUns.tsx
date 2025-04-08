@@ -31,13 +31,14 @@ const UeberUns = () => {
               
               <div className="prose prose-slate max-w-none">
                 <p className="mb-4">
-                  BankDetektiv ist aus einem ganz persönlichen Aha-Moment entstanden: Sebastian – mit über 15 Jahren Erfahrung in der Banken- und FinTech-Industrie – stolperte über eine Abbuchung, die er sich einfach nicht erklären konnte. Nach stundenlanger Recherche stand fest: So geht's nicht weiter. Es braucht eine Lösung, die jeder versteht – ohne Fachchinesisch.
+                  BankDetektiv – entstanden aus einem persönlichen Aha-Moment:
+                  Sebastian, mit über 15 Jahren Erfahrung in der Banken- und FinTech-Welt, stieß eines Tages auf eine mysteriöse Abbuchung auf seinem Konto. Trotz stundenlanger Recherche blieb unklar, worum es sich handelte. Da wurde ihm klar: So kann das nicht weitergehen. Es braucht eine Lösung, die jeder versteht – und die endlich Licht in komplizierte Transaktionen bringt.
                 </p>
                 <p className="mb-4">
-                  Gemeinsam mit Lara, die aus der Finanzwelt kommt und genau weiß, wie man komplexe Themen klar und freundlich erklärt, und Jian-Yang, der als Tech-Mastermind selbst den undurchsichtigsten Buchungscode entschlüsselt, wurde aus einer Idee eine Mission.
+                  Gemeinsam mit Lara, die komplexe Finanzthemen verständlich und sympathisch auf den Punkt bringt, und Jian-Yang, dem Tech-Mastermind, der selbst den kryptischsten Buchungscode knackt, wurde aus der Idee eine klare Mission.
                 </p>
                 <p>
-                  Heute hilft BankDetektiv Menschen in ganz Deutschland dabei, ihre Kontoauszüge schnell zu verstehen, verdächtige Abbuchungen zu erkennen und wieder die Kontrolle über ihre Finanzen zu gewinnen – verständlich, digital und mit einem echten Team im Hintergrund.
+                  Heute unterstützt BankDetektiv Menschen in ganz Deutschland dabei, ihre Kontoauszüge auf einen Blick zu verstehen, verdächtige Abbuchungen zu erkennen – und die Kontrolle über ihre Finanzen zurückzugewinnen: verständlich, digital und mit einem echten Team an ihrer Seite.
                 </p>
               </div>
               
