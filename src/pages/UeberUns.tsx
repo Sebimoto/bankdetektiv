@@ -72,6 +72,18 @@ const UeberUns = () => {
                   Heute hilft BankDetektiv Menschen in ganz Deutschland dabei, ihre Kontoauszüge schnell zu verstehen, verdächtige Abbuchungen zu erkennen und wieder die Kontrolle über ihre Finanzen zu gewinnen – verständlich, digital und mit einem echten Team im Hintergrund.
                 </p>
               </div>
+              
+              {/* Updated Mission Statement */}
+              <div className="mt-8 pt-8 border-t border-secondary-foreground/20">
+                <div className="text-center">
+                  <h3 className="text-xl font-medium mb-3">Unsere Mission</h3>
+                  <p className="text-lg font-display">
+                    BankDetektiv – weil du wissen solltest, wofür du zahlst. 
+                    <br />
+                    Wir machen Schluss mit Fragezeichen auf dem Kontoauszug.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
