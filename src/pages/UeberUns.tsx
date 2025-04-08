@@ -44,6 +44,24 @@ const UeberUns = () => {
                 </div>
               </div>
             </div>
+            
+            {/* New Team Section */}
+            <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
+              <h2 className="text-2xl font-display font-bold mb-6">Sebastian, Lara & Jian-Yang</h2>
+              <h3 className="text-xl mb-6">Das Team hinter BankDetektiv</h3>
+              
+              <div className="prose prose-slate max-w-none">
+                <p className="mb-4">
+                  BankDetektiv ist aus einem ganz persönlichen Aha-Moment entstanden: Sebastian – mit über 15 Jahren Erfahrung in der Banken- und FinTech-Industrie – stolperte über eine Abbuchung, die er sich einfach nicht erklären konnte. Nach stundenlanger Recherche stand fest: So geht's nicht weiter. Es braucht eine Lösung, die jeder versteht – ohne Fachchinesisch.
+                </p>
+                <p className="mb-4">
+                  Gemeinsam mit Lara, die aus der Finanzwelt kommt und genau weiß, wie man komplexe Themen klar und freundlich erklärt, und Jian-Yang, der als Tech-Mastermind selbst den undurchsichtigsten Buchungscode entschlüsselt, wurde aus einer Idee eine Mission.
+                </p>
+                <p>
+                  Heute hilft BankDetektiv Menschen in ganz Deutschland dabei, ihre Kontoauszüge schnell zu verstehen, verdächtige Abbuchungen zu erkennen und wieder die Kontrolle über ihre Finanzen zu gewinnen – verständlich, digital und mit einem echten Team im Hintergrund.
+                </p>
+              </div>
+            </div>
 
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
               <h2 className="text-2xl font-display font-bold mb-6">Unsere Expertise</h2>
