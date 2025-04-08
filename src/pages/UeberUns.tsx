@@ -16,8 +16,7 @@ const UeberUns = () => {
             
             {/* Team Section with Image */}
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
-              <h2 className="text-2xl font-display font-bold mb-6">Sebastian, Lara & Jian-Yang</h2>
-              <h3 className="text-xl mb-6">Das Team hinter BankDetektiv</h3>
+              <h2 className="text-2xl font-display font-bold mb-6">Das Team hinter BankDetektiv</h2>
               
               {/* Team Image */}
               <div className="mb-8">
