@@ -12,6 +12,7 @@ import {
   CommandItem
 } from '@/components/ui/command';
 import { Search } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface SearchResult {
   id: string;
@@ -29,6 +30,7 @@ export function SearchBox() {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [hasFocus, setHasFocus] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const { toast } = useToast();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +50,26 @@ export function SearchBox() {
       setResults(matchedResults.length > 0 ? matchedResults : []);
       setIsSearching(false);
       setIsCommandOpen(false);
+      
+      if (matchedResults.length === 0) {
+        toast({
+          title: "Keine Ergebnisse gefunden",
+          description: `Leider konnten wir keine Übereinstimmung für "${query}" finden.`,
+          variant: "destructive"
+        });
+      } else if (matchedResults.length === 1) {
+        toast({
+          title: "Unternehmen gefunden!",
+          description: `Wir haben ein Ergebnis für "${query}" gefunden.`,
+          variant: "default"
+        });
+      } else {
+        toast({
+          title: "Mehrere Ergebnisse gefunden",
+          description: `Wir haben ${matchedResults.length} Ergebnisse für "${query}" gefunden.`,
+          variant: "default"
+        });
+      }
     }, 500); // Reduziert für bessere Benutzererfahrung
   };
 
@@ -55,6 +77,12 @@ export function SearchBox() {
     setQuery(company.companyName);
     setIsCommandOpen(false);
     setResults([company]);
+    
+    toast({
+      title: "Unternehmen ausgewählt",
+      description: `${company.companyName} wurde ausgewählt.`,
+      variant: "default"
+    });
   };
 
   // Livesearch für Command-Komponente

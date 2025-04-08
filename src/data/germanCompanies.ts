@@ -1,3 +1,4 @@
+
 // Umfangreiche Datenbank mit den meistgenutzten Online-Shops und Diensten in Deutschland
 // sowie deren übliche Abbuchungsbezeichnungen
 
@@ -646,4 +647,424 @@ export const germanCompanies: Company[] = [
     description: 'Versicherungsunternehmen',
     category: 'Versicherung',
     logo: 'https://logo.clearbit.com/ergo.de',
-    website: 'ergo
+    website: 'ergo.de',
+    chargeDetails: 'ERGO-Abbuchungen erscheinen als "ERGO" oder "ERGO Versicherung" auf dem Kontoauszug.',
+    searchTerms: ['ERGO', 'ERGO Versicherung', 'ERGO Group', 'ERGO Direkt', 'ERGO Deutschland']
+  },
+  
+  // Weitere Unternehmen hinzufügen - Fortsetzung ab ID 61
+  {
+    id: '61',
+    companyName: 'Generali',
+    description: 'Versicherungsunternehmen',
+    category: 'Versicherung',
+    logo: 'https://logo.clearbit.com/generali.de',
+    website: 'generali.de',
+    chargeDetails: 'Generali-Abbuchungen erscheinen als "GENERALI" oder "Generali Deutschland" auf dem Kontoauszug.',
+    searchTerms: ['GENERALI', 'Generali Deutschland', 'Generali Versicherung', 'Generali Group']
+  },
+  {
+    id: '62',
+    companyName: 'Signal Iduna',
+    description: 'Versicherungsunternehmen',
+    category: 'Versicherung',
+    logo: 'https://logo.clearbit.com/signal-iduna.de',
+    website: 'signal-iduna.de',
+    chargeDetails: 'Signal Iduna-Abbuchungen erscheinen als "SIGNAL IDUNA" auf dem Kontoauszug.',
+    searchTerms: ['SIGNAL IDUNA', 'Signal Iduna Gruppe', 'Signal Versicherung', 'Iduna']
+  },
+  {
+    id: '63',
+    companyName: 'R+V Versicherung',
+    description: 'Versicherungsunternehmen',
+    category: 'Versicherung',
+    logo: 'https://logo.clearbit.com/ruv.de',
+    website: 'ruv.de',
+    chargeDetails: 'R+V-Abbuchungen erscheinen als "R+V" oder "R+V Versicherung" auf dem Kontoauszug.',
+    searchTerms: ['R+V', 'RV', 'R+V Versicherung', 'RuV', 'R und V']
+  },
+  
+  // Banken
+  {
+    id: '64',
+    companyName: 'Deutsche Bank',
+    description: 'Kreditinstitut',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/deutsche-bank.de',
+    website: 'deutsche-bank.de',
+    chargeDetails: 'Deutsche Bank-Abbuchungen erscheinen als "DEUTSCHE BANK" auf dem Kontoauszug.',
+    searchTerms: ['DEUTSCHE BANK', 'DB', 'Dt. Bank', 'Deutsche Bank AG']
+  },
+  {
+    id: '65',
+    companyName: 'Commerzbank',
+    description: 'Kreditinstitut',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/commerzbank.de',
+    website: 'commerzbank.de',
+    chargeDetails: 'Commerzbank-Abbuchungen erscheinen als "COMMERZBANK" auf dem Kontoauszug.',
+    searchTerms: ['COMMERZBANK', 'Commerzbank AG', 'COBA']
+  },
+  {
+    id: '66',
+    companyName: 'Sparkasse',
+    description: 'Kreditinstitut',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/sparkasse.de',
+    website: 'sparkasse.de',
+    chargeDetails: 'Sparkassen-Abbuchungen erscheinen mit dem Namen der jeweiligen lokalen Sparkasse auf dem Kontoauszug.',
+    searchTerms: ['SPARKASSE', 'Spk', 'Stadtsparkasse', 'Kreissparkasse']
+  },
+  {
+    id: '67',
+    companyName: 'Volksbank',
+    description: 'Kreditinstitut',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/volksbank.de',
+    website: 'volksbank.de',
+    chargeDetails: 'Volksbank-Abbuchungen erscheinen mit dem Namen der jeweiligen lokalen Volksbank auf dem Kontoauszug.',
+    searchTerms: ['VOLKSBANK', 'VB', 'Raiffeisenbank', 'VR Bank']
+  },
+  {
+    id: '68',
+    companyName: 'ING',
+    description: 'Direktbank',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/ing.de',
+    website: 'ing.de',
+    chargeDetails: 'ING-Abbuchungen erscheinen als "ING" oder "ING-DiBa" auf dem Kontoauszug.',
+    searchTerms: ['ING', 'ING-DiBa', 'ING DiBa', 'ING Bank']
+  },
+  {
+    id: '69',
+    companyName: 'DKB',
+    description: 'Direktbank',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/dkb.de',
+    website: 'dkb.de',
+    chargeDetails: 'DKB-Abbuchungen erscheinen als "DKB" oder "Deutsche Kreditbank" auf dem Kontoauszug.',
+    searchTerms: ['DKB', 'Deutsche Kreditbank', 'DKB AG', 'DKB Bank']
+  },
+  {
+    id: '70',
+    companyName: 'comdirect',
+    description: 'Direktbank',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/comdirect.de',
+    website: 'comdirect.de',
+    chargeDetails: 'comdirect-Abbuchungen erscheinen als "COMDIRECT" auf dem Kontoauszug.',
+    searchTerms: ['COMDIRECT', 'Comdirect Bank', 'Comdirect AG']
+  },
+  
+  // Weitere Online-Händler
+  {
+    id: '71',
+    companyName: 'Bonprix',
+    description: 'Online-Modehändler',
+    category: 'Mode',
+    logo: 'https://logo.clearbit.com/bonprix.de',
+    website: 'bonprix.de',
+    chargeDetails: 'Bonprix-Abbuchungen erscheinen als "BONPRIX" auf dem Kontoauszug.',
+    searchTerms: ['BONPRIX', 'Bonprix Handelsgesellschaft', 'Bonprix GmbH']
+  },
+  {
+    id: '72',
+    companyName: 'Baur',
+    description: 'Online-Versandhaus',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/baur.de',
+    website: 'baur.de',
+    chargeDetails: 'Baur-Abbuchungen erscheinen als "BAUR" auf dem Kontoauszug.',
+    searchTerms: ['BAUR', 'Baur Versand', 'Baur.de']
+  },
+  {
+    id: '73',
+    companyName: 'Wayfair',
+    description: 'Online-Möbelhändler',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/wayfair.de',
+    website: 'wayfair.de',
+    chargeDetails: 'Wayfair-Abbuchungen erscheinen als "WAYFAIR" auf dem Kontoauszug.',
+    searchTerms: ['WAYFAIR', 'Wayfair GmbH', 'Wayfair.de']
+  },
+  {
+    id: '74',
+    companyName: 'Westwing',
+    description: 'Online-Möbelhändler',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/westwing.de',
+    website: 'westwing.de',
+    chargeDetails: 'Westwing-Abbuchungen erscheinen als "WESTWING" auf dem Kontoauszug.',
+    searchTerms: ['WESTWING', 'Westwing GmbH', 'Westwing Home & Living']
+  },
+  {
+    id: '75',
+    companyName: 'IKEA',
+    description: 'Möbelhaus',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/ikea.com',
+    website: 'ikea.de',
+    chargeDetails: 'IKEA-Abbuchungen erscheinen als "IKEA" oder "IKEA Deutschland" auf dem Kontoauszug.',
+    searchTerms: ['IKEA', 'IKEA Deutschland', 'IKEA GmbH', 'IKEA.com']
+  },
+  {
+    id: '76',
+    companyName: 'Hornbach',
+    description: 'Baumarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/hornbach.de',
+    website: 'hornbach.de',
+    chargeDetails: 'Hornbach-Abbuchungen erscheinen als "HORNBACH" auf dem Kontoauszug.',
+    searchTerms: ['HORNBACH', 'Hornbach Baumarkt', 'Hornbach AG']
+  },
+  {
+    id: '77',
+    companyName: 'OBI',
+    description: 'Baumarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/obi.de',
+    website: 'obi.de',
+    chargeDetails: 'OBI-Abbuchungen erscheinen als "OBI" auf dem Kontoauszug.',
+    searchTerms: ['OBI', 'OBI Markt', 'OBI GmbH', 'OBI Baumarkt']
+  },
+  {
+    id: '78',
+    companyName: 'Bauhaus',
+    description: 'Baumarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/bauhaus.info',
+    website: 'bauhaus.info',
+    chargeDetails: 'Bauhaus-Abbuchungen erscheinen als "BAUHAUS" auf dem Kontoauszug.',
+    searchTerms: ['BAUHAUS', 'Bauhaus AG', 'Bauhaus GmbH']
+  },
+  {
+    id: '79',
+    companyName: 'Toom',
+    description: 'Baumarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/toom.de',
+    website: 'toom.de',
+    chargeDetails: 'Toom-Abbuchungen erscheinen als "TOOM" oder "Toom Baumarkt" auf dem Kontoauszug.',
+    searchTerms: ['TOOM', 'Toom Baumarkt', 'Toom GmbH']
+  },
+  {
+    id: '80',
+    companyName: 'Hagebau',
+    description: 'Baumarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/hagebau.de',
+    website: 'hagebau.de',
+    chargeDetails: 'Hagebau-Abbuchungen erscheinen als "HAGEBAU" auf dem Kontoauszug.',
+    searchTerms: ['HAGEBAU', 'Hagebau Handelsgesellschaft', 'Hagebaumarkt']
+  },
+  
+  // Elektronikfachgeschäfte
+  {
+    id: '81',
+    companyName: 'Conrad',
+    description: 'Elektronik-Fachgeschäft',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/conrad.de',
+    website: 'conrad.de',
+    chargeDetails: 'Conrad-Abbuchungen erscheinen als "CONRAD" oder "Conrad Electronic" auf dem Kontoauszug.',
+    searchTerms: ['CONRAD', 'Conrad Electronic', 'Conrad.de', 'Conrad GmbH']
+  },
+  {
+    id: '82',
+    companyName: 'Euronics',
+    description: 'Elektronik-Fachgeschäft',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/euronics.de',
+    website: 'euronics.de',
+    chargeDetails: 'Euronics-Abbuchungen erscheinen als "EURONICS" auf dem Kontoauszug.',
+    searchTerms: ['EURONICS', 'Euronics Deutschland', 'Euronics XXL']
+  },
+  {
+    id: '83',
+    companyName: 'Expert',
+    description: 'Elektronik-Fachgeschäft',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/expert.de',
+    website: 'expert.de',
+    chargeDetails: 'Expert-Abbuchungen erscheinen als "EXPERT" auf dem Kontoauszug.',
+    searchTerms: ['EXPERT', 'Expert Elektro', 'Expert.de']
+  },
+  {
+    id: '84',
+    companyName: 'Gravis',
+    description: 'Apple-Händler',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/gravis.de',
+    website: 'gravis.de',
+    chargeDetails: 'Gravis-Abbuchungen erscheinen als "GRAVIS" auf dem Kontoauszug.',
+    searchTerms: ['GRAVIS', 'Gravis Computervertriebsgesellschaft', 'Gravis.de']
+  },
+  
+  // Drogeriemärkte
+  {
+    id: '85',
+    companyName: 'dm',
+    description: 'Drogeriemarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/dm.de',
+    website: 'dm.de',
+    chargeDetails: 'dm-Abbuchungen erscheinen als "DM" oder "dm-drogerie markt" auf dem Kontoauszug.',
+    searchTerms: ['DM', 'dm-drogerie markt', 'dm.de', 'DM Drogerie']
+  },
+  {
+    id: '86',
+    companyName: 'Rossmann',
+    description: 'Drogeriemarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/rossmann.de',
+    website: 'rossmann.de',
+    chargeDetails: 'Rossmann-Abbuchungen erscheinen als "ROSSMANN" auf dem Kontoauszug.',
+    searchTerms: ['ROSSMANN', 'Rossmann Drogeriemarkt', 'Dirk Rossmann GmbH']
+  },
+  {
+    id: '87',
+    companyName: 'Müller',
+    description: 'Drogeriemarkt',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/mueller.de',
+    website: 'mueller.de',
+    chargeDetails: 'Müller-Abbuchungen erscheinen als "MÜLLER" oder "Müller Drogerie" auf dem Kontoauszug.',
+    searchTerms: ['MÜLLER', 'MULLER', 'Müller Drogerie', 'Müller Ltd.']
+  },
+  
+  // Möbelhäuser
+  {
+    id: '88',
+    companyName: 'XXXLutz',
+    description: 'Möbelhaus',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/xxxlutz.de',
+    website: 'xxxlutz.de',
+    chargeDetails: 'XXXLutz-Abbuchungen erscheinen als "XXXLUTZ" auf dem Kontoauszug.',
+    searchTerms: ['XXXLUTZ', 'XXXLutz GmbH', 'XXXLutz.de']
+  },
+  {
+    id: '89',
+    companyName: 'Poco',
+    description: 'Möbelhaus',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/poco.de',
+    website: 'poco.de',
+    chargeDetails: 'Poco-Abbuchungen erscheinen als "POCO" oder "Poco Einrichtungsmärkte" auf dem Kontoauszug.',
+    searchTerms: ['POCO', 'Poco Einrichtungsmärkte', 'Poco.de']
+  },
+  {
+    id: '90',
+    companyName: 'Roller',
+    description: 'Möbelhaus',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/roller.de',
+    website: 'roller.de',
+    chargeDetails: 'Roller-Abbuchungen erscheinen als "ROLLER" auf dem Kontoauszug.',
+    searchTerms: ['ROLLER', 'Roller GmbH', 'Roller.de']
+  },
+  {
+    id: '91',
+    companyName: 'Höffner',
+    description: 'Möbelhaus',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/hoeffner.de',
+    website: 'hoeffner.de',
+    chargeDetails: 'Höffner-Abbuchungen erscheinen als "HÖFFNER" oder "Möbel Höffner" auf dem Kontoauszug.',
+    searchTerms: ['HÖFFNER', 'HOEFFNER', 'Möbel Höffner', 'Höffner Möbelgesellschaft']
+  },
+  
+  // Lebensmittel (weitere)
+  {
+    id: '92',
+    companyName: 'Kaufland',
+    description: 'Supermarkt',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/kaufland.de',
+    website: 'kaufland.de',
+    chargeDetails: 'Kaufland-Abbuchungen erscheinen als "KAUFLAND" auf dem Kontoauszug.',
+    searchTerms: ['KAUFLAND', 'Kaufland Stiftung', 'Kaufland.de']
+  },
+  {
+    id: '93',
+    companyName: 'Netto',
+    description: 'Discounter',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/netto-online.de',
+    website: 'netto-online.de',
+    chargeDetails: 'Netto-Abbuchungen erscheinen als "NETTO" auf dem Kontoauszug.',
+    searchTerms: ['NETTO', 'Netto Marken-Discount', 'Netto Online']
+  },
+  {
+    id: '94',
+    companyName: 'Penny',
+    description: 'Discounter',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/penny.de',
+    website: 'penny.de',
+    chargeDetails: 'Penny-Abbuchungen erscheinen als "PENNY" auf dem Kontoauszug.',
+    searchTerms: ['PENNY', 'Penny Markt', 'Penny.de']
+  },
+  {
+    id: '95',
+    companyName: 'Norma',
+    description: 'Discounter',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/norma-online.de',
+    website: 'norma-online.de',
+    chargeDetails: 'Norma-Abbuchungen erscheinen als "NORMA" auf dem Kontoauszug.',
+    searchTerms: ['NORMA', 'Norma Lebensmittelfilialbetrieb', 'Norma Online']
+  },
+  {
+    id: '96',
+    companyName: 'Globus',
+    description: 'Supermarkt',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/globus.de',
+    website: 'globus.de',
+    chargeDetails: 'Globus-Abbuchungen erscheinen als "GLOBUS" auf dem Kontoauszug.',
+    searchTerms: ['GLOBUS', 'Globus SB-Warenhaus', 'Globus.de']
+  },
+  {
+    id: '97',
+    companyName: 'Edeka24',
+    description: 'Online-Supermarkt',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/edeka24.de',
+    website: 'edeka24.de',
+    chargeDetails: 'Edeka24-Abbuchungen erscheinen als "EDEKA24" auf dem Kontoauszug.',
+    searchTerms: ['EDEKA24', 'Edeka 24', 'Edeka Online']
+  },
+  
+  // Sportgeschäfte
+  {
+    id: '98',
+    companyName: 'Decathlon',
+    description: 'Sportgeschäft',
+    category: 'Sport',
+    logo: 'https://logo.clearbit.com/decathlon.de',
+    website: 'decathlon.de',
+    chargeDetails: 'Decathlon-Abbuchungen erscheinen als "DECATHLON" auf dem Kontoauszug.',
+    searchTerms: ['DECATHLON', 'Decathlon Deutschland', 'Decathlon.de']
+  },
+  {
+    id: '99',
+    companyName: 'SportScheck',
+    description: 'Sportgeschäft',
+    category: 'Sport',
+    logo: 'https://logo.clearbit.com/sportscheck.com',
+    website: 'sportscheck.com',
+    chargeDetails: 'SportScheck-Abbuchungen erscheinen als "SPORTSCHECK" auf dem Kontoauszug.',
+    searchTerms: ['SPORTSCHECK', 'SportScheck GmbH', 'SportScheck.com']
+  },
+  {
+    id: '100',
+    companyName: 'Intersport',
+    description: 'Sportgeschäft',
+    category: 'Sport',
+    logo: 'https://logo.clearbit.com/intersport.de',
+    website: 'intersport.de',
+    chargeDetails: 'Intersport-Abbuchungen erscheinen als "INTERSPORT" auf dem Kontoauszug.',
+    searchTerms: ['INTERSPORT', 'Intersport Deutschland', 'Intersport.de']
+  }
+];
