@@ -76,6 +76,9 @@ export function SearchBox() {
             )}
           </button>
         </div>
+        <div className="text-xs text-muted-foreground mt-2 text-right">
+          Durchsuche unsere Datenbank mit {germanCompanies.length} Unternehmen und deren Abbuchungsbezeichnungen.
+        </div>
       </form>
 
       <div className="relative min-h-[100px]">

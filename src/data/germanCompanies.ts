@@ -1,4 +1,3 @@
-
 // Umfangreiche Datenbank mit den meistgenutzten Online-Shops und Diensten in Deutschland
 // sowie deren übliche Abbuchungsbezeichnungen
 
@@ -324,26 +323,327 @@ export const germanCompanies: Company[] = [
     searchTerms: ['HUK-COBURG', 'HUK COBURG', 'HUK', 'HUK24', 'HUK Versicherung']
   },
   
-  // ... Weitere 9.970+ Einträge für deutsche Online-Shops und Dienste
-];
-
-// Für diese Demo-Version wurden nur die wichtigsten 30 Unternehmen detailliert aufgeführt.
-// In einer realen Anwendung würde die Datenbank über 10.000 Einträge enthalten.
-
-// Zusätzlich zu den hier gezeigten detaillierten Einträgen können weitere
-// deutsche Online-Shops und Dienste in den Kategorien eingetragen werden:
-// - Elektronik (z.B. Alternate, Cyberport, Notebooksbilliger)
-// - Mode (z.B. About You, Breuninger, H&M, Zara, Asos)
-// - Sportartikel (z.B. SportScheck, Decathlon)
-// - Gesundheit & Drogerie (z.B. DocMorris, Rossmann, dm)
-// - Reise & Unterkunft (z.B. Booking.com, Airbnb, HRS, Expedia)
-// - Möbel & Wohnen (z.B. IKEA, Wayfair, home24)
-// - Lebensmittelversand (z.B. Rewe, Edeka, HelloFresh)
-// - Buchhandlungen (z.B. Thalia, Hugendubel)
-// - Ticket-Plattformen (z.B. Eventim, Ticketmaster)
-// - Elektronische Artikel (z.B. Digitec, Galaxus)
-// - Fitness & Gesundheit (z.B. Fitness First, Urban Sports Club)
-// - Abonnementdienste (z.B. Readly, Blinkist)
-// - Gaming (z.B. Steam, Epic Games, Nintendo)
-// - Bildungsangebote (z.B. Udemy, Babbel)
-// - und viele weitere
+  // Weitere Einzelhändler
+  {
+    id: '30',
+    companyName: 'Tchibo',
+    description: 'Kaffee- und Konsumgüterhandel',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/tchibo.de',
+    website: 'tchibo.de',
+    chargeDetails: 'Tchibo-Abbuchungen erscheinen als "TCHIBO GMBH" oder "Tchibo Direct" auf dem Kontoauszug.',
+    searchTerms: ['TCHIBO', 'Tchibo GmbH', 'Tchibo Direct', 'TCH*', 'Tchibo Online']
+  },
+  {
+    id: '31',
+    companyName: 'Galeria',
+    description: 'Warenhauskette',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/galeria.de',
+    website: 'galeria.de',
+    chargeDetails: 'Galeria-Abbuchungen erscheinen als "GALERIA" oder "Galeria Karstadt Kaufhof" auf dem Kontoauszug.',
+    searchTerms: ['GALERIA', 'Galeria Karstadt Kaufhof', 'Karstadt', 'Kaufhof', 'GALERIA.DE']
+  },
+  {
+    id: '32',
+    companyName: 'Thalia',
+    description: 'Buchhandlung',
+    category: 'Einzelhandel',
+    logo: 'https://logo.clearbit.com/thalia.de',
+    website: 'thalia.de',
+    chargeDetails: 'Thalia-Abbuchungen erscheinen als "THALIA" oder "Thalia Bücher" auf dem Kontoauszug.',
+    searchTerms: ['THALIA', 'Thalia Bücher', 'Thalia.de', 'Thalia Buchhandlung']
+  },
+  
+  // Mode & Bekleidung (Ergänzungen)
+  {
+    id: '33',
+    companyName: 'H&M',
+    description: 'Bekleidungseinzelhändler',
+    category: 'Mode',
+    logo: 'https://logo.clearbit.com/hm.com',
+    website: 'hm.com',
+    chargeDetails: 'H&M-Abbuchungen erscheinen als "H&M" oder "H & M Hennes & Mauritz" auf dem Kontoauszug.',
+    searchTerms: ['H&M', 'H & M', 'Hennes & Mauritz', 'H&M Online', 'H&M DE']
+  },
+  {
+    id: '34',
+    companyName: 'ZARA',
+    description: 'Bekleidungseinzelhändler',
+    category: 'Mode',
+    logo: 'https://logo.clearbit.com/zara.com',
+    website: 'zara.com/de',
+    chargeDetails: 'ZARA-Abbuchungen erscheinen als "ZARA" oder "Inditex" auf dem Kontoauszug.',
+    searchTerms: ['ZARA', 'Inditex', 'ZARA Deutschland', 'ZARA Home', 'ZARA Online']
+  },
+  {
+    id: '35',
+    companyName: 'ASOS',
+    description: 'Online-Modehändler',
+    category: 'Mode',
+    logo: 'https://logo.clearbit.com/asos.com',
+    website: 'asos.de',
+    chargeDetails: 'ASOS-Abbuchungen erscheinen als "ASOS" oder "ASOS.com" auf dem Kontoauszug.',
+    searchTerms: ['ASOS', 'ASOS.com', 'ASOS DE', 'ASOS GmbH', 'ASOS Marketplace']
+  },
+  {
+    id: '36',
+    companyName: 'About You',
+    description: 'Online-Modehändler',
+    category: 'Mode',
+    logo: 'https://logo.clearbit.com/aboutyou.de',
+    website: 'aboutyou.de',
+    chargeDetails: 'About You-Abbuchungen erscheinen als "ABOUT YOU" oder "AboutYou GmbH" auf dem Kontoauszug.',
+    searchTerms: ['ABOUT YOU', 'AboutYou', 'AboutYou GmbH', 'ABOUTYOU.DE']
+  },
+  
+  // Fitnessstudios
+  {
+    id: '37',
+    companyName: 'McFIT',
+    description: 'Fitnessstudiokette',
+    category: 'Fitness',
+    logo: 'https://logo.clearbit.com/mcfit.com',
+    website: 'mcfit.com',
+    chargeDetails: 'McFIT-Abbuchungen erscheinen als "MCFIT" oder "RSG Group GmbH" auf dem Kontoauszug.',
+    searchTerms: ['MCFIT', 'McFIT GmbH', 'RSG Group', 'McFIT Mitgliedschaft', 'McFIT Abo']
+  },
+  {
+    id: '38',
+    companyName: 'Fitness First',
+    description: 'Fitnessstudiokette',
+    category: 'Fitness',
+    logo: 'https://logo.clearbit.com/fitnessfirst.de',
+    website: 'fitnessfirst.de',
+    chargeDetails: 'Fitness First-Abbuchungen erscheinen als "FITNESS FIRST" oder "Fitness First Germany" auf dem Kontoauszug.',
+    searchTerms: ['FITNESS FIRST', 'Fitness First Germany', 'Fitness First Abo', 'Fitness First Mitgliedschaft']
+  },
+  {
+    id: '39',
+    companyName: 'Urban Sports Club',
+    description: 'Fitness-Mitgliedschaft für verschiedene Sportangebote',
+    category: 'Fitness',
+    logo: 'https://logo.clearbit.com/urbansportsclub.com',
+    website: 'urbansportsclub.com',
+    chargeDetails: 'Urban Sports Club-Abbuchungen erscheinen als "URBAN SPORTS CLUB" oder "Urbansportsclub GmbH" auf dem Kontoauszug.',
+    searchTerms: ['URBAN SPORTS CLUB', 'Urbansportsclub', 'USC', 'Urban Sports', 'UrbanSportsClub GmbH']
+  },
+  {
+    id: '40',
+    companyName: 'FitX',
+    description: 'Fitnessstudiokette',
+    category: 'Fitness',
+    logo: 'https://logo.clearbit.com/fitx.de',
+    website: 'fitx.de',
+    chargeDetails: 'FitX-Abbuchungen erscheinen als "FITX" oder "FitX Deutschland GmbH" auf dem Kontoauszug.',
+    searchTerms: ['FITX', 'FitX Deutschland', 'FitX Fitness', 'FitX Mitgliedschaft', 'FitX Abo']
+  },
+  
+  // Kreditkartenunternehmen
+  {
+    id: '41',
+    companyName: 'VISA',
+    description: 'Kreditkartenanbieter',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/visa.com',
+    website: 'visa.de',
+    chargeDetails: 'VISA-Abbuchungen zeigen den Namen des Händlers zusammen mit einer VISA-Referenznummer.',
+    searchTerms: ['VISA', 'Visa Debit', 'Visa Credit', 'Visa Kreditkarte', 'VISA*']
+  },
+  {
+    id: '42',
+    companyName: 'Mastercard',
+    description: 'Kreditkartenanbieter',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/mastercard.com',
+    website: 'mastercard.de',
+    chargeDetails: 'Mastercard-Abbuchungen zeigen den Namen des Händlers zusammen mit einer Mastercard-Referenznummer.',
+    searchTerms: ['Mastercard', 'MC', 'MasterCard Debit', 'MasterCard Credit', 'MC*']
+  },
+  {
+    id: '43',
+    companyName: 'American Express',
+    description: 'Kreditkartenanbieter',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/americanexpress.com',
+    website: 'americanexpress.com',
+    chargeDetails: 'American Express-Abbuchungen erscheinen als "AMEX" oder "American Express" gefolgt von der Kartennummer.',
+    searchTerms: ['AMEX', 'American Express', 'Amex', 'AMERICAN EXPRESS', 'AX*']
+  },
+  {
+    id: '44',
+    companyName: 'Barclaycard',
+    description: 'Kreditkartenanbieter',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/barclaycard.de',
+    website: 'barclays.de',
+    chargeDetails: 'Barclaycard-Abbuchungen erscheinen als "BARCLAYCARD" oder "Barclays Bank Ireland" auf dem Kontoauszug.',
+    searchTerms: ['BARCLAYCARD', 'Barclays', 'Barclays Bank', 'Barclaycard Germany', 'Barclays DE']
+  },
+  
+  // Weitere Zahlungsdienstleister
+  {
+    id: '45',
+    companyName: 'Stripe',
+    description: 'Online-Zahlungsdienstleister',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/stripe.com',
+    website: 'stripe.com',
+    chargeDetails: 'Stripe-Abbuchungen zeigen oft den Namen des Händlers zusammen mit "*Stripe" oder "STRIPE" an.',
+    searchTerms: ['STRIPE', '*Stripe', 'Stripe Payment', 'Stripe Zahlung', 'STRIPE.COM']
+  },
+  {
+    id: '46',
+    companyName: 'Adyen',
+    description: 'Online-Zahlungsdienstleister',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/adyen.com',
+    website: 'adyen.com',
+    chargeDetails: 'Adyen-Abbuchungen erscheinen als "ADYEN" oder gefolgt vom Namen des Händlers auf dem Kontoauszug.',
+    searchTerms: ['ADYEN', 'Adyen B.V.', 'Adyen Payment', 'Adyen Zahlung']
+  },
+  {
+    id: '47',
+    companyName: 'SumUp',
+    description: 'Zahlungsdienstleister für Kleinunternehmen',
+    category: 'Finanzen',
+    logo: 'https://logo.clearbit.com/sumup.com',
+    website: 'sumup.de',
+    chargeDetails: 'SumUp-Abbuchungen erscheinen als "SUMUP" oder "SumUp Payments" auf dem Kontoauszug.',
+    searchTerms: ['SUMUP', 'SumUp Payments', 'SumUp *', 'SUMUP EU', 'SUMUP Payment']
+  },
+  
+  // Lebensmitteleinzelhandel
+  {
+    id: '48',
+    companyName: 'REWE',
+    description: 'Lebensmitteleinzelhandelskette',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/rewe.de',
+    website: 'rewe.de',
+    chargeDetails: 'REWE-Abbuchungen erscheinen als "REWE" oder "REWE Markt GmbH" auf dem Kontoauszug.',
+    searchTerms: ['REWE', 'REWE Markt', 'REWE Lieferservice', 'REWE.DE', 'REWE Group']
+  },
+  {
+    id: '49',
+    companyName: 'EDEKA',
+    description: 'Lebensmitteleinzelhandelskette',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/edeka.de',
+    website: 'edeka.de',
+    chargeDetails: 'EDEKA-Abbuchungen erscheinen als "EDEKA" oder "EDEKA Markt" auf dem Kontoauszug.',
+    searchTerms: ['EDEKA', 'EDEKA Markt', 'EDEKA Lieferservice', 'EDEKA.DE', 'EDEKA Group']
+  },
+  {
+    id: '50',
+    companyName: 'Aldi',
+    description: 'Discounter-Supermarktkette',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/aldi.de',
+    website: 'aldi.de',
+    chargeDetails: 'Aldi-Abbuchungen erscheinen als "ALDI" oder "ALDI SÜD/NORD" auf dem Kontoauszug.',
+    searchTerms: ['ALDI', 'ALDI SÜD', 'ALDI NORD', 'ALDI.DE', 'Aldi Einkauf']
+  },
+  {
+    id: '51',
+    companyName: 'Lidl',
+    description: 'Discounter-Supermarktkette',
+    category: 'Lebensmittel',
+    logo: 'https://logo.clearbit.com/lidl.de',
+    website: 'lidl.de',
+    chargeDetails: 'Lidl-Abbuchungen erscheinen als "LIDL" oder "Lidl Stiftung" auf dem Kontoauszug.',
+    searchTerms: ['LIDL', 'Lidl Stiftung', 'LIDL.DE', 'Lidl Online', 'Lidl Shop']
+  },
+  
+  // Gaming & Unterhaltung
+  {
+    id: '52',
+    companyName: 'Steam',
+    description: 'Digitale Vertriebsplattform für Computerspiele',
+    category: 'Gaming',
+    logo: 'https://logo.clearbit.com/steampowered.com',
+    website: 'store.steampowered.com',
+    chargeDetails: 'Steam-Abbuchungen erscheinen als "STEAM" oder "Valve Corp." auf dem Kontoauszug.',
+    searchTerms: ['STEAM', 'Valve Corp.', 'Steam Purchase', 'Steam Games', 'Steampowered']
+  },
+  {
+    id: '53',
+    companyName: 'Epic Games',
+    description: 'Digitale Vertriebsplattform für Computerspiele',
+    category: 'Gaming',
+    logo: 'https://logo.clearbit.com/epicgames.com',
+    website: 'epicgames.com',
+    chargeDetails: 'Epic Games-Abbuchungen erscheinen als "EPIC GAMES" auf dem Kontoauszug.',
+    searchTerms: ['EPIC GAMES', 'Epic Games Inc', 'Epic Games Store', 'Fortnite', 'EPICGAMES']
+  },
+  {
+    id: '54',
+    companyName: 'Sony PlayStation',
+    description: 'Videospielplattform',
+    category: 'Gaming',
+    logo: 'https://logo.clearbit.com/playstation.com',
+    website: 'playstation.com',
+    chargeDetails: 'PlayStation-Abbuchungen erscheinen als "PLAYSTATION" oder "Sony Interactive Entertainment" auf dem Kontoauszug.',
+    searchTerms: ['PLAYSTATION', 'Sony Interactive', 'PS Store', 'PlayStation Network', 'PSN']
+  },
+  {
+    id: '55',
+    companyName: 'Xbox',
+    description: 'Videospielplattform',
+    category: 'Gaming',
+    logo: 'https://logo.clearbit.com/xbox.com',
+    website: 'xbox.com',
+    chargeDetails: 'Xbox-Abbuchungen erscheinen als "MICROSOFT XBOX" oder "MS XBOX" auf dem Kontoauszug.',
+    searchTerms: ['MICROSOFT XBOX', 'MS XBOX', 'Xbox Live', 'Xbox Game Pass', 'Microsoft Gaming']
+  },
+  
+  // Elektronik & Technik (weitere)
+  {
+    id: '56',
+    companyName: 'Cyberport',
+    description: 'Elektronik-Einzelhändler',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/cyberport.de',
+    website: 'cyberport.de',
+    chargeDetails: 'Cyberport-Abbuchungen erscheinen als "CYBERPORT" oder "Cyberport GmbH" auf dem Kontoauszug.',
+    searchTerms: ['CYBERPORT', 'Cyberport GmbH', 'Cyberport.de', 'CYPORT*']
+  },
+  {
+    id: '57',
+    companyName: 'Alternate',
+    description: 'Elektronik-Einzelhändler',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/alternate.de',
+    website: 'alternate.de',
+    chargeDetails: 'Alternate-Abbuchungen erscheinen als "ALTERNATE" oder "Alternate GmbH" auf dem Kontoauszug.',
+    searchTerms: ['ALTERNATE', 'Alternate GmbH', 'Alternate.de', 'ALTERN*']
+  },
+  {
+    id: '58',
+    companyName: 'notebooksbilliger.de',
+    description: 'Online-Händler für Computer und Elektronik',
+    category: 'Elektronik',
+    logo: 'https://logo.clearbit.com/notebooksbilliger.de',
+    website: 'notebooksbilliger.de',
+    chargeDetails: 'notebooksbilliger.de-Abbuchungen erscheinen als "NOTEBOOKSBILLIGER" oder "NBB" auf dem Kontoauszug.',
+    searchTerms: ['NOTEBOOKSBILLIGER', 'NBB', 'notebooksbilliger.de', 'Notebooks Billiger']
+  },
+  
+  // Versicherungen (weitere)
+  {
+    id: '59',
+    companyName: 'AXA',
+    description: 'Versicherungsunternehmen',
+    category: 'Versicherung',
+    logo: 'https://logo.clearbit.com/axa.de',
+    website: 'axa.de',
+    chargeDetails: 'AXA-Abbuchungen erscheinen als "AXA" oder "AXA Versicherung" auf dem Kontoauszug.',
+    searchTerms: ['AXA', 'AXA Versicherung', 'AXA Krankenversicherung', 'AXA Kfz', 'AXA Deutschland']
+  },
+  {
+    id: '60',
+    companyName: 'ERGO',
+    description: 'Versicherungsunternehmen',
+    category: 'Versicherung',
+    logo: 'https://logo.clearbit.com/ergo.de',
+    website: 'ergo
