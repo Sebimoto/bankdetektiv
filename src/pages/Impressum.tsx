@@ -14,8 +14,8 @@ export default function Impressum() {
             <h2>Angaben gemäß § 5 TMG</h2>
             <p>
               Ohana Ventures UG (haftungsbeschränkt)<br />
-              Mainzer Landstraße 47<br />
-              60329 Frankfurt am Main
+              Berger Str. 259 a<br />
+              D-60385 Frankfurt a. Main
             </p>
             
             <h3>Vertreten durch</h3>
