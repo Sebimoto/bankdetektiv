@@ -13,6 +13,47 @@ const UeberUns = () => {
             <p className="text-xl text-muted-foreground mb-12">
               Unsere Mission ist es, Verbraucher zu schützen und Transparenz in Finanztransaktionen zu bringen.
             </p>
+            
+            {/* Team Section with Image */}
+            <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
+              <h2 className="text-2xl font-display font-bold mb-6">Sebastian, Lara & Jian-Yang</h2>
+              <h3 className="text-xl mb-6">Das Team hinter BankDetektiv</h3>
+              
+              {/* Team Image */}
+              <div className="mb-8">
+                <div className="rounded-xl overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/c039eb47-a613-435f-8a2e-3444e9447625.png" 
+                    alt="Das BankDetektiv Team: Sebastian, Lara und Jian-Yang" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+              
+              <div className="prose prose-slate max-w-none">
+                <p className="mb-4">
+                  BankDetektiv ist aus einem ganz persönlichen Aha-Moment entstanden: Sebastian – mit über 15 Jahren Erfahrung in der Banken- und FinTech-Industrie – stolperte über eine Abbuchung, die er sich einfach nicht erklären konnte. Nach stundenlanger Recherche stand fest: So geht's nicht weiter. Es braucht eine Lösung, die jeder versteht – ohne Fachchinesisch.
+                </p>
+                <p className="mb-4">
+                  Gemeinsam mit Lara, die aus der Finanzwelt kommt und genau weiß, wie man komplexe Themen klar und freundlich erklärt, und Jian-Yang, der als Tech-Mastermind selbst den undurchsichtigsten Buchungscode entschlüsselt, wurde aus einer Idee eine Mission.
+                </p>
+                <p>
+                  Heute hilft BankDetektiv Menschen in ganz Deutschland dabei, ihre Kontoauszüge schnell zu verstehen, verdächtige Abbuchungen zu erkennen und wieder die Kontrolle über ihre Finanzen zu gewinnen – verständlich, digital und mit einem echten Team im Hintergrund.
+                </p>
+              </div>
+              
+              {/* Mission Statement */}
+              <div className="mt-8 pt-8 border-t border-secondary-foreground/20">
+                <div className="text-center">
+                  <h3 className="text-xl font-medium mb-3">Unsere Mission</h3>
+                  <p className="text-lg font-display">
+                    BankDetektiv – weil du wissen solltest, wofür du zahlst. 
+                    <br />
+                    Wir machen Schluss mit Fragezeichen auf dem Kontoauszug.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
               <h2 className="text-2xl font-display font-bold mb-6">Unsere Expertise</h2>
