@@ -1,8 +1,17 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
 import { germanCompanies } from '@/data/germanCompanies';
+import { 
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem
+} from '@/components/ui/command';
+import { Search } from 'lucide-react';
 
 interface SearchResult {
   id: string;
@@ -19,6 +28,7 @@ export function SearchBox() {
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [hasFocus, setHasFocus] = useState(false);
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,12 +43,39 @@ export function SearchBox() {
       const matchedResults = germanCompanies.filter(company => 
         company.companyName.toLowerCase().includes(searchQuery) || 
         company.searchTerms.some(term => term.toLowerCase().includes(searchQuery))
-      ).slice(0, 5); // Begrenze auf 5 Ergebnisse für bessere Übersicht
+      ).slice(0, 8); // Begrenze auf 8 Ergebnisse für bessere Übersicht
       
       setResults(matchedResults.length > 0 ? matchedResults : []);
       setIsSearching(false);
-    }, 1000);
+      setIsCommandOpen(false);
+    }, 500); // Reduziert für bessere Benutzererfahrung
   };
+
+  const handleCommandSelect = (company: SearchResult) => {
+    setQuery(company.companyName);
+    setIsCommandOpen(false);
+    setResults([company]);
+  };
+
+  // Livesearch für Command-Komponente
+  const [commandResults, setCommandResults] = useState<SearchResult[]>([]);
+  
+  useEffect(() => {
+    if (query.trim().length > 1) {
+      const searchQuery = query.toLowerCase();
+      const matched = germanCompanies
+        .filter(company => 
+          company.companyName.toLowerCase().includes(searchQuery) || 
+          company.searchTerms.some(term => term.toLowerCase().includes(searchQuery))
+        )
+        .slice(0, 8);
+      setCommandResults(matched);
+      setIsCommandOpen(matched.length > 0);
+    } else {
+      setCommandResults([]);
+      setIsCommandOpen(false);
+    }
+  }, [query]);
 
   return (
     <div className="w-full">
@@ -51,20 +88,63 @@ export function SearchBox() {
               : "shadow-md hover:shadow-lg"
           )}
         >
-          <input
-            type="text"
-            placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
-            className="flex-1 px-6 py-4 text-base md:text-lg outline-none bg-transparent"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onFocus={() => setHasFocus(true)}
-            onBlur={() => setHasFocus(false)}
-          />
+          <div className="flex-1 relative">
+            <input
+              type="text"
+              placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
+              className="w-full px-6 py-4 text-base md:text-lg outline-none bg-transparent"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onFocus={() => {
+                setHasFocus(true);
+                if (query.trim().length > 1) setIsCommandOpen(true);
+              }}
+              onBlur={() => {
+                setHasFocus(false);
+                // Verzögerung um Auswahl zu ermöglichen
+                setTimeout(() => setIsCommandOpen(false), 200);
+              }}
+            />
+            
+            {isCommandOpen && commandResults.length > 0 && (
+              <div className="absolute left-0 right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-lg border border-gray-200 max-h-[300px] overflow-y-auto">
+                <Command className="rounded-lg border shadow-md">
+                  <CommandList>
+                    <CommandEmpty>Keine Ergebnisse gefunden</CommandEmpty>
+                    <CommandGroup heading="Unternehmen">
+                      {commandResults.map((company) => (
+                        <CommandItem
+                          key={company.id}
+                          onSelect={() => handleCommandSelect(company)}
+                          className="flex items-center gap-2 px-4 py-2 cursor-pointer"
+                        >
+                          {company.logo && (
+                            <img 
+                              src={company.logo} 
+                              alt={company.companyName} 
+                              className="w-5 h-5 object-contain"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = 'none';
+                              }}
+                            />
+                          )}
+                          <span className="font-medium">{company.companyName}</span>
+                          <span className="text-xs text-muted-foreground ml-2">{company.category}</span>
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </div>
+            )}
+          </div>
+          
           <button
             type="submit"
-            className="bg-primary text-white px-6 py-4 font-medium transition-transform hover:scale-105 active:scale-95 disabled:opacity-70 disabled:hover:scale-100"
+            className="bg-primary text-white px-6 py-4 font-medium transition-transform hover:scale-105 active:scale-95 disabled:opacity-70 disabled:hover:scale-100 flex items-center gap-2"
             disabled={isSearching || !query.trim()}
           >
+            <Search className="h-5 w-5" />
             {isSearching ? (
               <span className="loading-dots">
                 <div></div>
