@@ -45,10 +45,21 @@ const UeberUns = () => {
               </div>
             </div>
             
-            {/* New Team Section */}
+            {/* Team Section with Image */}
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
               <h2 className="text-2xl font-display font-bold mb-6">Sebastian, Lara & Jian-Yang</h2>
               <h3 className="text-xl mb-6">Das Team hinter BankDetektiv</h3>
+              
+              {/* Team Image */}
+              <div className="mb-8">
+                <div className="rounded-xl overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/421d57ba-1d4b-461c-93ed-6dfb8a0746e7.png" 
+                    alt="Das BankDetektiv Team: Sebastian, Lara und Jian-Yang" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
               
               <div className="prose prose-slate max-w-none">
                 <p className="mb-4">
