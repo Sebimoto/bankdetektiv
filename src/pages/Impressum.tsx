@@ -13,9 +13,9 @@ export default function Impressum() {
           <div className="prose prose-slate max-w-none">
             <h2>Angaben gemäß § 5 TMG</h2>
             <p>
-              BankDetektiv GmbH<br />
-              Musterstraße 123<br />
-              12345 Berlin
+              Ohana Ventures UG (haftungsbeschränkt)<br />
+              Rosenthaler Straße 72 A<br />
+              10119 Berlin
             </p>
             
             <h3>Vertreten durch</h3>
@@ -25,21 +25,14 @@ export default function Impressum() {
             
             <h3>Kontakt</h3>
             <p>
-              Telefon: +49 (0) 123 456789<br />
               E-Mail: info@bankdetektiv.de
             </p>
             
             <h3>Registereintrag</h3>
             <p>
               Eintragung im Handelsregister.<br />
-              Registergericht: Amtsgericht Berlin-Charlottenburg<br />
-              Registernummer: HRB 123456
-            </p>
-            
-            <h3>Umsatzsteuer-ID</h3>
-            <p>
-              Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-              DE 123456789
+              Registergericht: Amtsgericht Charlottenburg (Berlin)<br />
+              Registernummer: HRB 172384 B
             </p>
             
             <h2>Haftungsausschluss</h2>
