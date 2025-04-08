@@ -14,8 +14,8 @@ export default function Impressum() {
             <h2>Angaben gemäß § 5 TMG</h2>
             <p>
               Ohana Ventures UG (haftungsbeschränkt)<br />
-              Rosenthaler Straße 72 A<br />
-              10119 Berlin
+              Mainzer Landstraße 47<br />
+              60329 Frankfurt am Main
             </p>
             
             <h3>Vertreten durch</h3>
@@ -31,8 +31,8 @@ export default function Impressum() {
             <h3>Registereintrag</h3>
             <p>
               Eintragung im Handelsregister.<br />
-              Registergericht: Amtsgericht Charlottenburg (Berlin)<br />
-              Registernummer: HRB 172384 B
+              Registergericht: Amtsgericht Frankfurt am Main<br />
+              Registernummer: HRB 128623
             </p>
             
             <h2>Haftungsausschluss</h2>
