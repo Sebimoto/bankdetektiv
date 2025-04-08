@@ -13,37 +13,6 @@ const UeberUns = () => {
             <p className="text-xl text-muted-foreground mb-12">
               Unsere Mission ist es, Verbraucher zu schützen und Transparenz in Finanztransaktionen zu bringen.
             </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
-              <div className="md:col-span-5">
-                <div className="rounded-xl overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/f2b5846d-932a-4ec8-a638-91b81928e1a7.png" 
-                    alt="Sebastian Wuerz, Gründer von BankDetektiv" 
-                    className="w-full h-auto object-cover aspect-[3/4]"
-                  />
-                </div>
-              </div>
-              <div className="md:col-span-7">
-                <h2 className="text-2xl font-display font-bold mb-4">Sebastian Wuerz</h2>
-                <p className="text-muted-foreground mb-3 text-sm">Gründer & CEO</p>
-                
-                <div className="prose prose-slate max-w-none">
-                  <p className="mb-4">
-                    Mit über 15 Jahren Erfahrung im Bankwesen und der Finanztechnologie gründete Sebastian Wuerz BankDetektiv aus einem ganz persönlichen Grund: Er wollte endlich Klarheit in unverständliche Kontoauszüge bringen.
-                  </p>
-                  <p className="mb-4">
-                    Während seiner Zeit bei der Commerzbank und anderen Finanzinstituten sowie verschiedenen Startups fiel ihm immer wieder das gleiche Problem auf – viele Menschen konnten die oftmals kryptischen Abbuchungen auf ihren Kontoauszügen nicht zuordnen.
-                  </p>
-                  <p className="mb-4">
-                    „Als ich selbst eine mysteriös aussehende Abbuchung entdeckte und stundenlang recherchieren musste, um herauszufinden, wofür ich eigentlich bezahlt hatte, wurde mir klar: Es muss eine einfachere Lösung geben", sagt Sebastian.
-                  </p>
-                  <p>
-                    So entstand BankDetektiv – ein Service, der Millionen von Menschen in Deutschland dabei hilft, ihre Ausgaben auf einen Blick zu verstehen und sich vor potentiellem Betrug zu schützen.
-                  </p>
-                </div>
-              </div>
-            </div>
             
             {/* Team Section with Image */}
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
