@@ -23,7 +23,7 @@ const UeberUns = () => {
               <div className="mb-8">
                 <div className="rounded-xl overflow-hidden">
                   <img 
-                    src="/lovable-uploads/c039eb47-a613-435f-8a2e-3444e9447625.png" 
+                    src="/lovable-uploads/55ad27cb-a330-458a-bf53-d49cf87738eb.png" 
                     alt="Das BankDetektiv Team: Sebastian, Lara und Jian-Yang" 
                     className="w-full h-auto object-cover"
                   />
@@ -77,19 +77,6 @@ const UeberUns = () => {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-2xl font-display font-bold mb-6">Unsere Mission</h2>
-              <p className="text-lg mb-8">
-                Wir glauben, dass finanzielle Transparenz ein Grundrecht ist. Unsere Mission ist es, jedem Verbraucher die Möglichkeit zu geben, seine Finanztransaktionen vollständig zu verstehen und zu kontrollieren.
-              </p>
-              <a 
-                href="/" 
-                className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-medium transition-transform hover:scale-105 active:scale-95"
-              >
-                Jetzt BankDetektiv nutzen
-              </a>
             </div>
           </div>
         </section>
