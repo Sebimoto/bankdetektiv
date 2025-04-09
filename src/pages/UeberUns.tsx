@@ -1,6 +1,7 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const UeberUns = () => {
   return (
@@ -18,14 +19,19 @@ const UeberUns = () => {
             <div className="bg-secondary/30 rounded-3xl p-8 md:p-12 mb-12">
               <h2 className="text-2xl font-display font-bold mb-6">Das Team hinter BankDetektiv</h2>
               
-              {/* Team Image */}
+              {/* Team Image - Optimized */}
               <div className="mb-8">
                 <div className="rounded-xl overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/55ad27cb-a330-458a-bf53-d49cf87738eb.png" 
-                    alt="Das BankDetektiv Team: Sebastian, Lara und Jian-Yang" 
-                    className="w-full h-auto object-cover"
-                  />
+                  <AspectRatio ratio={16 / 9}>
+                    <img 
+                      src="/lovable-uploads/55ad27cb-a330-458a-bf53-d49cf87738eb.png" 
+                      alt="Das BankDetektiv Team: Sebastian, Lara und Jian-Yang" 
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                      width={800}
+                      height={450}
+                    />
+                  </AspectRatio>
                 </div>
               </div>
               
