@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
 import { germanCompanies } from '@/data/germanCompanies';
@@ -11,7 +11,7 @@ import {
   CommandGroup,
   CommandItem
 } from '@/components/ui/command';
-import { Search } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface SearchResult {
@@ -30,7 +30,16 @@ export function SearchBox() {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [hasFocus, setHasFocus] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+
+  // Generate a list of autocomplete suggestions from previous searches or common terms
+  const commonSearchTerms = [
+    "Amazon", "PayPal", "Netflix", "Spotify", "Apple", "Google", 
+    "Facebook", "Microsoft", "ADAC", "DHL", "Deutsche Bahn",
+    "Vodafone", "Telekom", "O2", "IKEA", "Zalando", "Otto"
+  ];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,11 +94,21 @@ export function SearchBox() {
     });
   };
 
-  // Livesearch für Command-Komponente
+  const handleSuggestionSelect = (suggestion: string) => {
+    setQuery(suggestion);
+    // Focus the input after selecting a suggestion
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+    setIsCommandOpen(false);
+  };
+
+  // Livesearch für Command-Komponente und Autofill-Vorschläge
   const [commandResults, setCommandResults] = useState<SearchResult[]>([]);
   
   useEffect(() => {
     if (query.trim().length > 1) {
+      // Update command results (companies)
       const searchQuery = query.toLowerCase();
       const matched = germanCompanies
         .filter(company => 
@@ -98,9 +117,18 @@ export function SearchBox() {
         )
         .slice(0, 8);
       setCommandResults(matched);
-      setIsCommandOpen(matched.length > 0);
+      
+      // Update autocomplete suggestions
+      const matchedSuggestions = commonSearchTerms
+        .filter(term => term.toLowerCase().includes(searchQuery))
+        .slice(0, 5);
+      setSuggestions(matchedSuggestions);
+      
+      // Show command popup if we have results
+      setIsCommandOpen(matched.length > 0 || matchedSuggestions.length > 0);
     } else {
       setCommandResults([]);
+      setSuggestions([]);
       setIsCommandOpen(false);
     }
   }, [query]);
@@ -118,6 +146,7 @@ export function SearchBox() {
         >
           <div className="flex-1 relative">
             <input
+              ref={inputRef}
               type="text"
               placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
               className="w-full px-6 py-4 text-base md:text-lg outline-none bg-transparent"
@@ -134,33 +163,51 @@ export function SearchBox() {
               }}
             />
             
-            {isCommandOpen && commandResults.length > 0 && (
+            {isCommandOpen && (commandResults.length > 0 || suggestions.length > 0) && (
               <div className="absolute left-0 right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-lg border border-gray-200 max-h-[300px] overflow-y-auto">
                 <Command className="rounded-lg border shadow-md">
                   <CommandList>
-                    <CommandEmpty>Keine Ergebnisse gefunden</CommandEmpty>
-                    <CommandGroup heading="Unternehmen">
-                      {commandResults.map((company) => (
-                        <CommandItem
-                          key={company.id}
-                          onSelect={() => handleCommandSelect(company)}
-                          className="flex items-center gap-2 px-4 py-2 cursor-pointer"
-                        >
-                          {company.logo && (
-                            <img 
-                              src={company.logo} 
-                              alt={company.companyName} 
-                              className="w-5 h-5 object-contain"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).style.display = 'none';
-                              }}
-                            />
-                          )}
-                          <span className="font-medium">{company.companyName}</span>
-                          <span className="text-xs text-muted-foreground ml-2">{company.category}</span>
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
+                    <CommandEmpty>Keine Vorschläge gefunden</CommandEmpty>
+                    
+                    {suggestions.length > 0 && (
+                      <CommandGroup heading="Autovervollständigung">
+                        {suggestions.map((suggestion, index) => (
+                          <CommandItem
+                            key={`suggestion-${index}`}
+                            onSelect={() => handleSuggestionSelect(suggestion)}
+                            className="flex items-center gap-2 px-4 py-2 cursor-pointer"
+                          >
+                            <ArrowRight className="w-4 h-4 text-primary" />
+                            <span className="font-medium">{suggestion}</span>
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    )}
+                    
+                    {commandResults.length > 0 && (
+                      <CommandGroup heading="Unternehmen">
+                        {commandResults.map((company) => (
+                          <CommandItem
+                            key={company.id}
+                            onSelect={() => handleCommandSelect(company)}
+                            className="flex items-center gap-2 px-4 py-2 cursor-pointer"
+                          >
+                            {company.logo && (
+                              <img 
+                                src={company.logo} 
+                                alt={company.companyName} 
+                                className="w-5 h-5 object-contain"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).style.display = 'none';
+                                }}
+                              />
+                            )}
+                            <span className="font-medium">{company.companyName}</span>
+                            <span className="text-xs text-muted-foreground ml-2">{company.category}</span>
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    )}
                   </CommandList>
                 </Command>
               </div>
