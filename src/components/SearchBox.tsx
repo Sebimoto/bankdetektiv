@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
 import { germanCompanies } from '@/data/germanCompanies';
@@ -37,7 +37,11 @@ export function SearchBox() {
 
   // Companies suggestions - based on company names for autocomplete
   const companyNames = germanCompanies.map(company => company.companyName);
-  const allSuggestions = [...new Set([...commonSearchTerms, ...companyNames])];
+  
+  // Use useMemo to create allSuggestions only once
+  const allSuggestions = useMemo(() => {
+    return [...new Set([...commonSearchTerms, ...companyNames])];
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,10 +127,8 @@ export function SearchBox() {
       .slice(0, 8);
     
     setFilteredSuggestions(matched);
-    
-    // Only show suggestions if we have matches and input is focused
     setShowSuggestions(matched.length > 0 && hasFocus);
-  }, [query, hasFocus]); // Removed allSuggestions from dependencies since it's constant during component lifecycle
+  }, [query, hasFocus, allSuggestions]);
 
   return (
     <div className="w-full">
