@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
@@ -45,6 +44,7 @@ export function SearchBox() {
     return [...new Set([...commonSearchTerms, ...companyNames])];
   }, [companyNames]);
 
+  // Handle search submission
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
@@ -96,7 +96,7 @@ export function SearchBox() {
     }
   };
 
-  // Close suggestions when clicking outside
+  // Detect clicks outside of suggestion box to close it
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -115,39 +115,30 @@ export function SearchBox() {
     };
   }, []);
 
-  // Filter suggestions based on input
+  // Filter suggestions based on input - this is the critical function
   useEffect(() => {
-    console.log("Filtering suggestions for query:", query);
-    console.log("hasFocus:", hasFocus);
-    
+    // Don't do anything if query is empty
     if (!query.trim()) {
       setFilteredSuggestions([]);
       setShowSuggestions(false);
       return;
     }
 
+    // Convert to lowercase for case-insensitive matching
     const searchQuery = query.toLowerCase();
-    console.log("Search query (lowercase):", searchQuery);
-    console.log("All suggestions count:", allSuggestions.length);
     
-    const matched = allSuggestions
-      .filter(term => term.toLowerCase().includes(searchQuery));
+    // Filter the suggestions that include the search query
+    const matched = allSuggestions.filter(term => 
+      term.toLowerCase().includes(searchQuery)
+    );
     
-    console.log("Matched suggestions:", matched);
-    
+    // Update state with filtered suggestions and show dropdown if there are matches
     setFilteredSuggestions(matched.slice(0, 8));
     setShowSuggestions(matched.length > 0 && hasFocus);
+    
   }, [query, hasFocus, allSuggestions]);
 
-  // Debug log to check if Rossmann is in the suggestions
-  useEffect(() => {
-    console.log("Checking for Rossmann in suggestions:");
-    console.log("Is 'Rossmann' in commonSearchTerms?", commonSearchTerms.includes("Rossmann"));
-    console.log("Is 'Rossmann' in companyNames?", companyNames.includes("Rossmann"));
-    const rossmannInAll = allSuggestions.some(s => s.includes("Rossmann"));
-    console.log("Is 'Rossmann' in allSuggestions?", rossmannInAll);
-  }, [allSuggestions, companyNames]);
-
+  // Here's the JSX return with the search form and results
   return (
     <div className="w-full">
       <form onSubmit={handleSearch} className="relative mb-6">
@@ -166,11 +157,18 @@ export function SearchBox() {
               placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
               className="w-full px-6 py-4 h-auto text-base md:text-lg border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                const newValue = e.target.value;
+                setQuery(newValue);
+                // Show suggestions immediately while typing if there's content
+                if (newValue.trim() && hasFocus) {
+                  setShowSuggestions(true);
+                }
+              }}
               onFocus={() => {
                 setHasFocus(true);
-                // If there's text and matches, show suggestions on focus
-                if (query.trim() && filteredSuggestions.length > 0) {
+                // If there's text, show suggestions on focus
+                if (query.trim()) {
                   setShowSuggestions(true);
                 }
               }}
