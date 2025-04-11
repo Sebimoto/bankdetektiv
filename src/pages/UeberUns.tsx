@@ -12,7 +12,9 @@ const UeberUns = () => {
           <div className="max-w-4xl mx-auto">
             <h1 className="text-3xl md:text-5xl font-display font-bold mb-6">Über uns</h1>
             <p className="text-xl text-muted-foreground mb-12">
-              Unsere Mission ist es, Verbraucher zu schützen und Transparenz in Finanztransaktionen zu bringen.
+              BankDetektiv – weil du wissen solltest, wofür du zahlst. 
+              <br />
+              Wir machen Schluss mit Fragezeichen auf dem Kontoauszug.
             </p>
             
             {/* Team Section with Image */}
