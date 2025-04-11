@@ -1,94 +1,41 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+
+import { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
-import { germanCompanies } from '@/data/germanCompanies';
 import { Search } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
-
-interface SearchResult {
-  id: string;
-  companyName: string;
-  description: string;
-  category: string;
-  logo?: string;
-  website?: string;
-  chargeDetails?: string;
-}
+import SuggestionsList from './SuggestionsList';
+import { useSearchSuggestions } from '@/hooks/use-search-suggestions';
+import { useSearchResults, SearchResult } from '@/hooks/use-search-results';
+import { germanCompanies } from '@/data/germanCompanies';
 
 export function SearchBox() {
   const [query, setQuery] = useState('');
-  const [isSearching, setIsSearching] = useState(false);
-  const [results, setResults] = useState<SearchResult[]>([]);
   const [hasFocus, setHasFocus] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
-  const { toast } = useToast();
-
-  // Generate a list of autocomplete suggestions from previous searches or common terms
-  const commonSearchTerms = [
-    "Amazon", "PayPal", "Netflix", "Spotify", "Apple", "Google", 
-    "Facebook", "Microsoft", "ADAC", "DHL", "Deutsche Bahn",
-    "Vodafone", "Telekom", "O2", "IKEA", "Zalando", "Otto", "Rossmann"
-  ];
-
-  // Companies suggestions - based on company names for autocomplete
-  const companyNames = useMemo(() => {
-    return germanCompanies.map(company => company.companyName);
-  }, []);
   
-  // Use useMemo to create allSuggestions only once
-  const allSuggestions = useMemo(() => {
-    return [...new Set([...commonSearchTerms, ...companyNames])];
-  }, [companyNames]);
+  // Use our custom hooks
+  const { 
+    filteredSuggestions, 
+    showSuggestions, 
+    showSuggestionsDropdown, 
+    hideSuggestionsDropdown 
+  } = useSearchSuggestions(query, hasFocus);
+  
+  const { isSearching, results, performSearch } = useSearchResults();
 
   // Handle search submission
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!query.trim()) return;
-    
-    setIsSearching(true);
-    setShowSuggestions(false);
-    
-    // Simulate API call to whatsthatcharge.com
-    setTimeout(() => {
-      // Search in the comprehensive database
-      const searchQuery = query.toLowerCase();
-      const matchedResults = germanCompanies.filter(company => 
-        company.companyName.toLowerCase().includes(searchQuery) || 
-        company.searchTerms.some(term => term.toLowerCase().includes(searchQuery))
-      ).slice(0, 8); // Limit to 8 results for better overview
-      
-      setResults(matchedResults.length > 0 ? matchedResults : []);
-      setIsSearching(false);
-      
-      if (matchedResults.length === 0) {
-        toast({
-          title: "Keine Ergebnisse gefunden",
-          description: `Leider konnten wir keine Übereinstimmung für "${query}" finden.`,
-          variant: "destructive"
-        });
-      } else if (matchedResults.length === 1) {
-        toast({
-          title: "Unternehmen gefunden!",
-          description: `Wir haben ein Ergebnis für "${query}" gefunden.`,
-          variant: "default"
-        });
-      } else {
-        toast({
-          title: "Mehrere Ergebnisse gefunden",
-          description: `Wir haben ${matchedResults.length} Ergebnisse für "${query}" gefunden.`,
-          variant: "default"
-        });
-      }
-    }, 500); // Reduced for better user experience
+    hideSuggestionsDropdown();
+    performSearch(query);
   };
 
+  // Handle suggestion selection
   const handleSuggestionSelect = (suggestion: string) => {
     setQuery(suggestion);
-    setShowSuggestions(false);
+    hideSuggestionsDropdown();
     
     // Focus the input after selecting a suggestion
     if (inputRef.current) {
@@ -96,7 +43,7 @@ export function SearchBox() {
     }
   };
 
-  // Detect clicks outside of suggestion box to close it
+  // Close suggestions when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -105,7 +52,7 @@ export function SearchBox() {
         inputRef.current &&
         !inputRef.current.contains(event.target as Node)
       ) {
-        setShowSuggestions(false);
+        hideSuggestionsDropdown();
       }
     }
 
@@ -113,32 +60,8 @@ export function SearchBox() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [hideSuggestionsDropdown]);
 
-  // Filter suggestions based on input - this is the critical function
-  useEffect(() => {
-    // Don't do anything if query is empty
-    if (!query.trim()) {
-      setFilteredSuggestions([]);
-      setShowSuggestions(false);
-      return;
-    }
-
-    // Convert to lowercase for case-insensitive matching
-    const searchQuery = query.toLowerCase();
-    
-    // Filter the suggestions that include the search query
-    const matched = allSuggestions.filter(term => 
-      term.toLowerCase().includes(searchQuery)
-    );
-    
-    // Update state with filtered suggestions and show dropdown if there are matches
-    setFilteredSuggestions(matched.slice(0, 8));
-    setShowSuggestions(matched.length > 0 && hasFocus);
-    
-  }, [query, hasFocus, allSuggestions]);
-
-  // Here's the JSX return with the search form and results
   return (
     <div className="w-full">
       <form onSubmit={handleSearch} className="relative mb-6">
@@ -157,49 +80,25 @@ export function SearchBox() {
               placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
               className="w-full px-6 py-4 h-auto text-base md:text-lg border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
               value={query}
-              onChange={(e) => {
-                const newValue = e.target.value;
-                setQuery(newValue);
-                // Show suggestions immediately while typing if there's content
-                if (newValue.trim() && hasFocus) {
-                  setShowSuggestions(true);
-                }
-              }}
+              onChange={(e) => setQuery(e.target.value)}
               onFocus={() => {
                 setHasFocus(true);
-                // If there's text, show suggestions on focus
-                if (query.trim()) {
-                  setShowSuggestions(true);
-                }
+                showSuggestionsDropdown();
               }}
               onBlur={() => {
                 // Delay to allow for suggestion selection
                 setTimeout(() => setHasFocus(false), 200);
               }}
-              autoComplete="off" // Prevent browser's native autocomplete
+              autoComplete="off"
             />
             
-            {/* Autocomplete Suggestions Dropdown */}
-            {showSuggestions && filteredSuggestions.length > 0 && (
-              <div 
-                ref={suggestionsRef}
-                className="absolute left-0 right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-lg border border-gray-200 max-h-[300px] overflow-y-auto"
-              >
-                <div className="py-1">
-                  <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground">Vorschläge</div>
-                  {filteredSuggestions.map((suggestion, index) => (
-                    <div
-                      key={`suggestion-${index}`}
-                      onClick={() => handleSuggestionSelect(suggestion)}
-                      className="px-4 py-2 text-sm cursor-pointer hover:bg-accent hover:text-accent-foreground flex items-center"
-                    >
-                      <Search className="w-4 h-4 text-muted-foreground mr-2" />
-                      <span>{suggestion}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* Suggestions Dropdown */}
+            <SuggestionsList
+              ref={suggestionsRef}
+              suggestions={filteredSuggestions}
+              onSelectSuggestion={handleSuggestionSelect}
+              visible={showSuggestions}
+            />
           </div>
           
           <button
@@ -231,7 +130,7 @@ export function SearchBox() {
           </div>
         ) : results.length > 0 ? (
           <div className="space-y-4 animate-fade-in">
-            {results.map((result) => (
+            {results.map((result: SearchResult) => (
               <ResultCard key={result.id} result={result} />
             ))}
           </div>
