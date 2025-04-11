@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/command';
 import { Search, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Input } from '@/components/ui/input';
 
 interface SearchResult {
   id: string;
@@ -145,11 +146,11 @@ export function SearchBox() {
           )}
         >
           <div className="flex-1 relative">
-            <input
+            <Input
               ref={inputRef}
               type="text"
               placeholder="Gib einen Firmennamen oder eine Abbuchungsbeschreibung ein..."
-              className="w-full px-6 py-4 text-base md:text-lg outline-none bg-transparent"
+              className="w-full px-6 py-4 h-auto text-base md:text-lg border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onFocus={() => {
@@ -165,38 +166,42 @@ export function SearchBox() {
             
             {isCommandOpen && (commandResults.length > 0 || suggestions.length > 0) && (
               <div className="absolute left-0 right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-lg border border-gray-200 max-h-[300px] overflow-y-auto">
-                <Command className="rounded-lg border shadow-md">
-                  <CommandList>
-                    <CommandEmpty>Keine Vorschläge gefunden</CommandEmpty>
+                <div className="rounded-lg border shadow-md bg-white">
+                  <div className="max-h-[300px] overflow-y-auto overflow-x-hidden">
+                    {suggestions.length === 0 && commandResults.length === 0 && (
+                      <div className="py-6 text-center text-sm">Keine Vorschläge gefunden</div>
+                    )}
                     
                     {suggestions.length > 0 && (
-                      <CommandGroup heading="Autovervollständigung">
+                      <div className="overflow-hidden p-1 text-foreground">
+                        <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">Autovervollständigung</div>
                         {suggestions.map((suggestion, index) => (
-                          <CommandItem
+                          <div
                             key={`suggestion-${index}`}
-                            onSelect={() => handleSuggestionSelect(suggestion)}
-                            className="flex items-center gap-2 px-4 py-2 cursor-pointer"
+                            onClick={() => handleSuggestionSelect(suggestion)}
+                            className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground"
                           >
-                            <ArrowRight className="w-4 h-4 text-primary" />
+                            <ArrowRight className="w-4 h-4 text-primary mr-2" />
                             <span className="font-medium">{suggestion}</span>
-                          </CommandItem>
+                          </div>
                         ))}
-                      </CommandGroup>
+                      </div>
                     )}
                     
                     {commandResults.length > 0 && (
-                      <CommandGroup heading="Unternehmen">
+                      <div className="overflow-hidden p-1 text-foreground">
+                        <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">Unternehmen</div>
                         {commandResults.map((company) => (
-                          <CommandItem
+                          <div
                             key={company.id}
-                            onSelect={() => handleCommandSelect(company)}
-                            className="flex items-center gap-2 px-4 py-2 cursor-pointer"
+                            onClick={() => handleCommandSelect(company)}
+                            className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
                           >
                             {company.logo && (
                               <img 
                                 src={company.logo} 
                                 alt={company.companyName} 
-                                className="w-5 h-5 object-contain"
+                                className="w-5 h-5 object-contain mr-2"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).style.display = 'none';
                                 }}
@@ -204,12 +209,12 @@ export function SearchBox() {
                             )}
                             <span className="font-medium">{company.companyName}</span>
                             <span className="text-xs text-muted-foreground ml-2">{company.category}</span>
-                          </CommandItem>
+                          </div>
                         ))}
-                      </CommandGroup>
+                      </div>
                     )}
-                  </CommandList>
-                </Command>
+                  </div>
+                </div>
               </div>
             )}
           </div>
