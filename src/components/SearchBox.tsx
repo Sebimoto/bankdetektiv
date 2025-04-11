@@ -32,16 +32,18 @@ export function SearchBox() {
   const commonSearchTerms = [
     "Amazon", "PayPal", "Netflix", "Spotify", "Apple", "Google", 
     "Facebook", "Microsoft", "ADAC", "DHL", "Deutsche Bahn",
-    "Vodafone", "Telekom", "O2", "IKEA", "Zalando", "Otto"
+    "Vodafone", "Telekom", "O2", "IKEA", "Zalando", "Otto", "Rossmann"
   ];
 
   // Companies suggestions - based on company names for autocomplete
-  const companyNames = germanCompanies.map(company => company.companyName);
+  const companyNames = useMemo(() => {
+    return germanCompanies.map(company => company.companyName);
+  }, []);
   
   // Use useMemo to create allSuggestions only once
   const allSuggestions = useMemo(() => {
     return [...new Set([...commonSearchTerms, ...companyNames])];
-  }, []);
+  }, [companyNames]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -115,20 +117,36 @@ export function SearchBox() {
 
   // Filter suggestions based on input
   useEffect(() => {
-    if (query.trim() === '') {
+    console.log("Filtering suggestions for query:", query);
+    console.log("hasFocus:", hasFocus);
+    
+    if (!query.trim()) {
       setFilteredSuggestions([]);
       setShowSuggestions(false);
       return;
     }
 
     const searchQuery = query.toLowerCase();
-    const matched = allSuggestions
-      .filter(term => term.toLowerCase().includes(searchQuery))
-      .slice(0, 8);
+    console.log("Search query (lowercase):", searchQuery);
+    console.log("All suggestions count:", allSuggestions.length);
     
-    setFilteredSuggestions(matched);
+    const matched = allSuggestions
+      .filter(term => term.toLowerCase().includes(searchQuery));
+    
+    console.log("Matched suggestions:", matched);
+    
+    setFilteredSuggestions(matched.slice(0, 8));
     setShowSuggestions(matched.length > 0 && hasFocus);
   }, [query, hasFocus, allSuggestions]);
+
+  // Debug log to check if Rossmann is in the suggestions
+  useEffect(() => {
+    console.log("Checking for Rossmann in suggestions:");
+    console.log("Is 'Rossmann' in commonSearchTerms?", commonSearchTerms.includes("Rossmann"));
+    console.log("Is 'Rossmann' in companyNames?", companyNames.includes("Rossmann"));
+    const rossmannInAll = allSuggestions.some(s => s.includes("Rossmann"));
+    console.log("Is 'Rossmann' in allSuggestions?", rossmannInAll);
+  }, [allSuggestions, companyNames]);
 
   return (
     <div className="w-full">
@@ -149,7 +167,13 @@ export function SearchBox() {
               className="w-full px-6 py-4 h-auto text-base md:text-lg border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onFocus={() => setHasFocus(true)}
+              onFocus={() => {
+                setHasFocus(true);
+                // If there's text and matches, show suggestions on focus
+                if (query.trim() && filteredSuggestions.length > 0) {
+                  setShowSuggestions(true);
+                }
+              }}
               onBlur={() => {
                 // Delay to allow for suggestion selection
                 setTimeout(() => setHasFocus(false), 200);
