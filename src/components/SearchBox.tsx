@@ -113,6 +113,7 @@ export function SearchBox() {
   useEffect(() => {
     if (query.trim() === '') {
       setFilteredSuggestions([]);
+      setShowSuggestions(false);
       return;
     }
 
@@ -123,9 +124,9 @@ export function SearchBox() {
     
     setFilteredSuggestions(matched);
     
-    // Only show if we have suggestions and input is focused
+    // Only show suggestions if we have matches and input is focused
     setShowSuggestions(matched.length > 0 && hasFocus);
-  }, [query, hasFocus, allSuggestions]);
+  }, [query, hasFocus]); // Removed allSuggestions from dependencies since it's constant during component lifecycle
 
   return (
     <div className="w-full">
