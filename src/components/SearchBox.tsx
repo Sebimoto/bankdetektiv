@@ -3,15 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import ResultCard from './ResultCard';
 import { germanCompanies } from '@/data/germanCompanies';
-import { 
-  Command,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem
-} from '@/components/ui/command';
-import { Search, ArrowRight } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 
@@ -30,9 +22,10 @@ export function SearchBox() {
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [hasFocus, setHasFocus] = useState(false);
-  const [isCommandOpen, setIsCommandOpen] = useState(false);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const suggestionsRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   // Generate a list of autocomplete suggestions from previous searches or common terms
@@ -42,24 +35,28 @@ export function SearchBox() {
     "Vodafone", "Telekom", "O2", "IKEA", "Zalando", "Otto"
   ];
 
+  // Companies suggestions - based on company names for autocomplete
+  const companyNames = germanCompanies.map(company => company.companyName);
+  const allSuggestions = [...new Set([...commonSearchTerms, ...companyNames])];
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
     
     setIsSearching(true);
+    setShowSuggestions(false);
     
-    // Simuliere API-Aufruf zu whatsthatcharge.com
+    // Simulate API call to whatsthatcharge.com
     setTimeout(() => {
-      // Suche in der umfangreichen Datenbank
+      // Search in the comprehensive database
       const searchQuery = query.toLowerCase();
       const matchedResults = germanCompanies.filter(company => 
         company.companyName.toLowerCase().includes(searchQuery) || 
         company.searchTerms.some(term => term.toLowerCase().includes(searchQuery))
-      ).slice(0, 8); // Begrenze auf 8 Ergebnisse für bessere Übersicht
+      ).slice(0, 8); // Limit to 8 results for better overview
       
       setResults(matchedResults.length > 0 ? matchedResults : []);
       setIsSearching(false);
-      setIsCommandOpen(false);
       
       if (matchedResults.length === 0) {
         toast({
@@ -80,59 +77,55 @@ export function SearchBox() {
           variant: "default"
         });
       }
-    }, 500); // Reduziert für bessere Benutzererfahrung
-  };
-
-  const handleCommandSelect = (company: SearchResult) => {
-    setQuery(company.companyName);
-    setIsCommandOpen(false);
-    setResults([company]);
-    
-    toast({
-      title: "Unternehmen ausgewählt",
-      description: `${company.companyName} wurde ausgewählt.`,
-      variant: "default"
-    });
+    }, 500); // Reduced for better user experience
   };
 
   const handleSuggestionSelect = (suggestion: string) => {
     setQuery(suggestion);
+    setShowSuggestions(false);
+    
     // Focus the input after selecting a suggestion
     if (inputRef.current) {
       inputRef.current.focus();
     }
-    setIsCommandOpen(false);
   };
 
-  // Livesearch für Command-Komponente und Autofill-Vorschläge
-  const [commandResults, setCommandResults] = useState<SearchResult[]>([]);
-  
+  // Close suggestions when clicking outside
   useEffect(() => {
-    if (query.trim().length > 1) {
-      // Update command results (companies)
-      const searchQuery = query.toLowerCase();
-      const matched = germanCompanies
-        .filter(company => 
-          company.companyName.toLowerCase().includes(searchQuery) || 
-          company.searchTerms.some(term => term.toLowerCase().includes(searchQuery))
-        )
-        .slice(0, 8);
-      setCommandResults(matched);
-      
-      // Update autocomplete suggestions
-      const matchedSuggestions = commonSearchTerms
-        .filter(term => term.toLowerCase().includes(searchQuery))
-        .slice(0, 5);
-      setSuggestions(matchedSuggestions);
-      
-      // Show command popup if we have results
-      setIsCommandOpen(matched.length > 0 || matchedSuggestions.length > 0);
-    } else {
-      setCommandResults([]);
-      setSuggestions([]);
-      setIsCommandOpen(false);
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        suggestionsRef.current && 
+        !suggestionsRef.current.contains(event.target as Node) &&
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        setShowSuggestions(false);
+      }
     }
-  }, [query]);
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Filter suggestions based on input
+  useEffect(() => {
+    if (query.trim() === '') {
+      setFilteredSuggestions([]);
+      return;
+    }
+
+    const searchQuery = query.toLowerCase();
+    const matched = allSuggestions
+      .filter(term => term.toLowerCase().includes(searchQuery))
+      .slice(0, 8);
+    
+    setFilteredSuggestions(matched);
+    
+    // Only show if we have suggestions and input is focused
+    setShowSuggestions(matched.length > 0 && hasFocus);
+  }, [query, hasFocus, allSuggestions]);
 
   return (
     <div className="w-full">
@@ -153,67 +146,32 @@ export function SearchBox() {
               className="w-full px-6 py-4 h-auto text-base md:text-lg border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onFocus={() => {
-                setHasFocus(true);
-                if (query.trim().length > 1) setIsCommandOpen(true);
-              }}
+              onFocus={() => setHasFocus(true)}
               onBlur={() => {
-                setHasFocus(false);
-                // Verzögerung um Auswahl zu ermöglichen
-                setTimeout(() => setIsCommandOpen(false), 200);
+                // Delay to allow for suggestion selection
+                setTimeout(() => setHasFocus(false), 200);
               }}
+              autoComplete="off" // Prevent browser's native autocomplete
             />
             
-            {isCommandOpen && (commandResults.length > 0 || suggestions.length > 0) && (
-              <div className="absolute left-0 right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-lg border border-gray-200 max-h-[300px] overflow-y-auto">
-                <div className="rounded-lg border shadow-md bg-white">
-                  <div className="max-h-[300px] overflow-y-auto overflow-x-hidden">
-                    {suggestions.length === 0 && commandResults.length === 0 && (
-                      <div className="py-6 text-center text-sm">Keine Vorschläge gefunden</div>
-                    )}
-                    
-                    {suggestions.length > 0 && (
-                      <div className="overflow-hidden p-1 text-foreground">
-                        <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">Autovervollständigung</div>
-                        {suggestions.map((suggestion, index) => (
-                          <div
-                            key={`suggestion-${index}`}
-                            onClick={() => handleSuggestionSelect(suggestion)}
-                            className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[selected='true']:bg-accent data-[selected=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground"
-                          >
-                            <ArrowRight className="w-4 h-4 text-primary mr-2" />
-                            <span className="font-medium">{suggestion}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    
-                    {commandResults.length > 0 && (
-                      <div className="overflow-hidden p-1 text-foreground">
-                        <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">Unternehmen</div>
-                        {commandResults.map((company) => (
-                          <div
-                            key={company.id}
-                            onClick={() => handleCommandSelect(company)}
-                            className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground"
-                          >
-                            {company.logo && (
-                              <img 
-                                src={company.logo} 
-                                alt={company.companyName} 
-                                className="w-5 h-5 object-contain mr-2"
-                                onError={(e) => {
-                                  (e.target as HTMLImageElement).style.display = 'none';
-                                }}
-                              />
-                            )}
-                            <span className="font-medium">{company.companyName}</span>
-                            <span className="text-xs text-muted-foreground ml-2">{company.category}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+            {/* Autocomplete Suggestions Dropdown */}
+            {showSuggestions && filteredSuggestions.length > 0 && (
+              <div 
+                ref={suggestionsRef}
+                className="absolute left-0 right-0 top-full mt-1 z-50 bg-white rounded-lg shadow-lg border border-gray-200 max-h-[300px] overflow-y-auto"
+              >
+                <div className="py-1">
+                  <div className="px-3 py-1.5 text-xs font-medium text-muted-foreground">Vorschläge</div>
+                  {filteredSuggestions.map((suggestion, index) => (
+                    <div
+                      key={`suggestion-${index}`}
+                      onClick={() => handleSuggestionSelect(suggestion)}
+                      className="px-4 py-2 text-sm cursor-pointer hover:bg-accent hover:text-accent-foreground flex items-center"
+                    >
+                      <Search className="w-4 h-4 text-muted-foreground mr-2" />
+                      <span>{suggestion}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
