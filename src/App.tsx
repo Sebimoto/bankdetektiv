@@ -11,6 +11,8 @@ import Kontakt from "./pages/Kontakt";
 import Datenschutz from "./pages/Datenschutz";
 import Impressum from "./pages/Impressum";
 import AGB from "./pages/AGB";
+import Wissen from "./pages/Wissen";
+import WissenAbbuchungen from "./pages/WissenAbbuchungen";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/ueber-uns" element={<UeberUns />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/wissen" element={<Wissen />} />
+          <Route path="/wissen/abbuchungen" element={<WissenAbbuchungen />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/agb" element={<AGB />} />

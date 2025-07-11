@@ -2,6 +2,15 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,6 +25,29 @@ export function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const wissenItems = [
+    {
+      title: "Abbuchungen verstehen",
+      href: "/wissen/abbuchungen",
+      description: "Lerne, wie du unbekannte Transaktionen identifizierst"
+    },
+    {
+      title: "Bankgebühren Guide",
+      href: "/wissen/bankgebuehren",
+      description: "Alles über versteckte Kosten und Gebühren"
+    },
+    {
+      title: "Sicherheit beim Banking",
+      href: "/wissen/sicherheit",
+      description: "Tipps zum sicheren Online-Banking"
+    },
+    {
+      title: "Häufige Abbuchungen",
+      href: "/wissen/haeufige-abbuchungen",
+      description: "Die häufigsten Abbuchungen und ihre Bedeutung"
+    }
+  ];
 
   return (
     <header 
@@ -36,6 +68,51 @@ export function Navbar() {
         
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">Startseite</Link>
+          
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-sm font-medium hover:text-primary transition-colors bg-transparent">
+                  Wissen
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-6 w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                    <div className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <Link
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          to="/wissen"
+                        >
+                          <div className="mb-2 mt-4 text-lg font-medium">
+                            Wissensbereich
+                          </div>
+                          <p className="text-sm leading-tight text-muted-foreground">
+                            Alles was du über Bankabbuchungen wissen musst
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </div>
+                    <div className="grid gap-3">
+                      {wissenItems.map((item) => (
+                        <NavigationMenuLink key={item.title} asChild>
+                          <Link
+                            to={item.href}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">{item.title}</div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {item.description}
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      ))}
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          
           <Link to="/ueber-uns" className="text-sm font-medium hover:text-primary transition-colors">Über uns</Link>
           <Link to="/faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</Link>
           <Link to="/kontakt" className="text-sm font-medium hover:text-primary transition-colors">Kontakt</Link>
