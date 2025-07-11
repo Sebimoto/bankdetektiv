@@ -7,8 +7,8 @@ export function Footer() {
   return (
     <footer className="bg-secondary/50 py-12 mt-20">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="md:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <h2 className="text-2xl font-display font-medium tracking-tight">
                 <span className="text-primary">Bank</span>Detektiv
@@ -31,6 +31,17 @@ export function Footer() {
               <li><Link to="/ueber-uns" className="hover:text-primary transition-colors">Über uns</Link></li>
               <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
               <li><Link to="/kontakt" className="hover:text-primary transition-colors">Kontakt</Link></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-medium mb-4">Wissen</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li><Link to="/wissen" className="hover:text-primary transition-colors">Wissensbereich</Link></li>
+              <li><Link to="/wissen/abbuchungen" className="hover:text-primary transition-colors">Abbuchungen verstehen</Link></li>
+              <li><Link to="/wissen/bankgebuehren" className="hover:text-primary transition-colors">Bankgebühren Guide</Link></li>
+              <li><Link to="/wissen/sicherheit" className="hover:text-primary transition-colors">Sicherheit beim Banking</Link></li>
+              <li><Link to="/wissen/haeufige-abbuchungen" className="hover:text-primary transition-colors">Häufige Abbuchungen</Link></li>
             </ul>
           </div>
           
